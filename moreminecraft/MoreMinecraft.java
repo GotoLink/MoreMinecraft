@@ -181,9 +181,9 @@ public class MoreMinecraft {
 	public static Item MultitoolEmerald;
 	public static Item MultitoolObsidian;
 	public static Item MultitoolRuby;
-	public static Item MultitoolGSaph;
-	public static Item MultitoolBSaph;
-	public static Item MultitoolYSaph;
+	public static Item MultitoolGreenSaph;
+	public static Item MultitoolBlueSaph;
+	public static Item MultitoolYellowSaph;
 	public static Item MultitoolSteel;
 	public static Item MultitoolTitanium;
 	public static Item pickaxeSteel;
@@ -220,7 +220,7 @@ public class MoreMinecraft {
 	public static Item enderiumPlate;
 	public static Item helmetEnd;
 	public static Item plateEnd;
-	public static Item leggingsEnd;
+	public static Item legsEnd;
 	public static Item bootsEnd;
 	public static Item pickaxeEnd;
 	public static Item axeEnd;
@@ -254,7 +254,7 @@ public class MoreMinecraft {
 	public static Item plateQuartz;
 	public static Item legsQuartz;
 	public static Item bootsQuartz;
-	public static Item MultiToolQuartz;
+	public static Item MultitoolQuartz;
 	public static Item quartzIngot;
 	public static Item potatoLauncher;
 	public static Item chipEject;
@@ -308,12 +308,12 @@ public class MoreMinecraft {
 	public static Item battleaxeEmerald;
 	public static Item battleaxeObsidian;
 	public static Item battleaxeRuby;
-	public static Item battleaxeBSaph;
-	public static Item battleaxeGSaph;
-	public static Item battleaxeYSaph;
+	public static Item battleaxeBlueSaph;
+	public static Item battleaxeGreenSaph;
+	public static Item battleaxeYellowSaph;
 	public static Item battleaxeSteel;
 	public static Item battleaxeTitanium;
-	public static Item battleaxeEndium;
+	public static Item battleaxeEnd;
 	public static Item battleaxeQuartz;
 	public static Item battleaxeCopper;
 	public static Item battleaxeTin;
@@ -326,12 +326,12 @@ public class MoreMinecraft {
 	public static Item knifeEmerald;
 	public static Item knifeObsidian;
 	public static Item knifeRuby;
-	public static Item knifeBSaph;
-	public static Item knifeGSaph;
-	public static Item knifeYSaph;
+	public static Item knifeBlueSaph;
+	public static Item knifeGreenSaph;
+	public static Item knifeYellowSaph;
 	public static Item knifeSteel;
 	public static Item knifeTitanium;
-	public static Item knifeEndium;
+	public static Item knifeEnd;
 	public static Item knifeQuartz;
 	public static Item knifeCopper;
 	public static Item knifeTin;
@@ -393,7 +393,7 @@ public class MoreMinecraft {
 		GameRegistry.registerWorldGenerator(new WorldGeneratorMoreMinecraft());
 	}
 
-	private void createArmorSet(Configuration config, String helmet, String plate, String legs, String boots, EnumArmorMaterial par1Enum, String layer, String name, Object madeOf, int madeOfMeta) {
+	private void createArmorSet(Configuration config, String field, EnumArmorMaterial par1Enum, String layer, String name, Object madeOf, int madeOfMeta) {
 		Item hpar1 = new ItemArmorMod(ConfigItem(config, name + " Helmet"), par1Enum, 0, layer).setUnlocalizedName("helmet" + layer).setTextureName(modID + ":armors/helmet" + layer);
 		Item cpar1 = new ItemArmorMod(ConfigItem(config, name + " Chestplate"), par1Enum, 1, layer).setUnlocalizedName("chestplate" + layer).setTextureName(modID + ":armors/chestplate" + layer);
 		Item lpar1 = new ItemArmorMod(ConfigItem(config, name + " Leggings"), par1Enum, 2, layer).setUnlocalizedName("leggings" + layer).setTextureName(modID + ":armors/leggings" + layer);
@@ -411,23 +411,16 @@ public class MoreMinecraft {
 			GameRegistry.addRecipe(new ItemStack(bpar1), "X X", "X X", 'X', new ItemStack(made, 1, madeOfMeta));
 		}
 		try {
-			this.getClass().getField(helmet).set(this, hpar1);
-			this.getClass().getField(plate).set(this, cpar1);
-			this.getClass().getField(legs).set(this, lpar1);
-			this.getClass().getField(boots).set(this, bpar1);
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
-		} catch (SecurityException e) {
+			this.getClass().getField("helmet" + field).set(this, hpar1);
+			this.getClass().getField("plate" + field).set(this, cpar1);
+			this.getClass().getField("legs" + field).set(this, lpar1);
+			this.getClass().getField("boots" + field).set(this, bpar1);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void createToolSet(Configuration config, String pickPar1, String axePar1, String shovelPar1, String hoePar1, String swordPar1, String MultitoolPar1, String BAxePar1, String knifePar1,
-			EnumToolMaterial par1Enum, String material, String name, Object madeOf, int madeOfMeta) {
+	private void createToolSet(Configuration config, String field, EnumToolMaterial par1Enum, String material, String name, Object madeOf, int madeOfMeta) {
 		Item pick = new ItemPickaxe(ConfigItem(config, name + " Pickaxe"), par1Enum).setUnlocalizedName("pickaxe" + material).setCreativeTab(tabTools)
 				.setTextureName(modID + ":tools/pickaxe" + material);
 		Item axe = new ItemAxe(ConfigItem(config, name + " Axe"), par1Enum).setUnlocalizedName("axe" + material).setCreativeTab(tabTools).setTextureName(modID + ":tools/axe" + material);
@@ -454,21 +447,15 @@ public class MoreMinecraft {
 			GameRegistry.addRecipe(new ItemStack(knife), " X ", " C ", 'X', new ItemStack(made, 1, madeOfMeta), 'C', Item.stick);
 		}
 		try {
-			this.getClass().getField(pickPar1).set(this, pick);
-			this.getClass().getField(axePar1).set(this, axe);
-			this.getClass().getField(shovelPar1).set(this, shovel);
-			this.getClass().getField(hoePar1).set(this, hoe);
-			this.getClass().getField(swordPar1).set(this, sword);
-			this.getClass().getField(MultitoolPar1).set(this, multitool);
-			this.getClass().getField(BAxePar1).set(this, BAxe);
-			this.getClass().getField(knifePar1).set(this, knife);
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
-		} catch (SecurityException e) {
+			this.getClass().getField("pickaxe" + field).set(this, pick);
+			this.getClass().getField("axe" + field).set(this, axe);
+			this.getClass().getField("shovel" + field).set(this, shovel);
+			this.getClass().getField("hoe" + field).set(this, hoe);
+			this.getClass().getField("sword" + field).set(this, sword);
+			this.getClass().getField("Multitool" + field).set(this, multitool);
+			this.getClass().getField("battleaxe" + field).set(this, BAxe);
+			this.getClass().getField("knife" + field).set(this, knife);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -494,46 +481,37 @@ public class MoreMinecraft {
 	}
 
 	private void sets(Configuration config) {
-		createArmorSet(config, "helmetEmerald", "plateEmerald", "legsEmerald", "bootsEmerald", armorEmerald, "emerald", "Emerald", Item.emerald, 0);
-		createArmorSet(config, "helmetObsidian", "plateObsidian", "legsObsidian", "bootsObsidian", armorObsidian, "obsidian", "Obsidian", obsidianPlate, 0);
-		createArmorSet(config, "helmetRuby", "plateRuby", "legsRuby", "bootsRuby", armorCrystal, "ruby", "Ruby", Ruby, 0);
-		createArmorSet(config, "helmetYellowSaph", "plateYellowSaph", "legsYellowSaph", "bootsYellowSaph", armorCrystal, "saphY", "Yellow Sapphire", YSaph, 0);
-		createArmorSet(config, "helmetGreenSaph", "plateGreenSaph", "legsGreenSaph", "bootsGreenSaph", armorCrystal, "saphG", "Green Sapphire", GSaph, 0);
-		createArmorSet(config, "helmetBlueSaph", "plateBlueSaph", "legsBlueSaph", "bootsBlueSaph", armorCrystal, "saphB", "Blue Sapphire", BSaph, 0);
-		createArmorSet(config, "helmetStone", "plateStone", "legsStone", "bootsStone", armorStone, "stone", "Stone", Block.stone, 0);
-		createArmorSet(config, "helmetWood", "plateWood", "legsWood", "bootsWood", armorWood, "wood", "Wooden", Block.planks, 0);
-		createArmorSet(config, "helmetWoodJungle", "plateWoodJungle", "legsWoodJungle", "bootsWoodJungle", armorWood, "wood_jungle", "Wooden", Block.planks, 3);
-		createArmorSet(config, "helmetWoodSpruce", "plateWoodSpruce", "legsWoodSpruce", "bootsWoodSpruce", armorWood, "wood_spruce", "Wooden", Block.planks, 1);
-		createArmorSet(config, "helmetWoodBirch", "plateWoodBirch", "legsWoodBirch", "bootsWoodBirch", armorWood, "wood_birch", "Wooden", Block.planks, 2);
-		createArmorSet(config, "helmetSteel", "plateSteel", "legsSteel", "bootsSteel", armorSteel, "steel", "Steel", steel, 0);
-		createArmorSet(config, "helmetTitanium", "plateTitanium", "legsTitanium", "bootsTitanium", armorTitanium, "titanium", "Titanium", titanium, 0);
-		createArmorSet(config, "helmetEnd", "plateEnd", "leggingsEnd", "bootsEnd", armorEnd, "end", "Endium", enderium, 0);
-		createArmorSet(config, "helmetQuartz", "plateQuartz", "legsQuartz", "bootsQuartz", armorQuartz, "quarts", "Quartz", quartzIngot, 0);
-		createArmorSet(config, "helmetCopper", "plateCopper", "legsCopper", "bootsCopper", armorMetal, "copper", "Copper", copperIngot, 0);
-		createArmorSet(config, "helmetTin", "plateTin", "legsTin", "bootsTin", armorMetal, "tin", "Tin", tinIngot, 0);
-		createArmorSet(config, "helmetBronze", "plateBronze", "legsBronze", "bootsBronze", armorBronze, "bronze", "Bronze", bronzeIngot, 0);
-		createToolSet(config, "pickaxeEmerald", "axeEmerald", "shovelEmerald", "hoeEmerald", "swordEmerald", "MultitoolEmerald", "battleaxeEmerald", "knifeEmerald", toolEmerald, "Emerald", "Emerald",
-				Item.emerald, 0);
-		createToolSet(config, "pickaxeObsidian", "axeObsidian", "shovelObsidian", "hoeObsidian", "swordObsidian", "MultitoolObsidian", "battleaxeObsidian", "knifeObsidian", toolObsidian, "Obsidian",
-				"Obsidian", obsidianPlate, 0);
-		createToolSet(config, "pickaxeRuby", "axeRuby", "shovelRuby", "hoeRuby", "swordRuby", "MultitoolRuby", "battleaxeRuby", "knifeRuby", toolCrystal, "RSaph", "Ruby", Ruby, 0);
-		createToolSet(config, "pickaxeYellowSaph", "axeYellowSaph", "shovelYellowSaph", "hoeYellowSaph", "swordYellowSaph", "MultitoolYSaph", "battleaxeYSaph", "knifeYSaph", toolCrystal, "YSaph",
-				"Yellow Sapphire", YSaph, 0);
-		createToolSet(config, "pickaxeBlueSaph", "axeBlueSaph", "shovelBlueSaph", "hoeBlueSaph", "swordBlueSaph", "MultitoolBSaph", "battleaxeBSaph", "knifeBSaph", toolCrystal, "BSaph",
-				"Blue Sapphire", BSaph, 0);
-		createToolSet(config, "pickaxeGreenSaph", "axeGreenSaph", "shovelGreenSaph", "hoeGreenSaph", "swordGreenSaph", "MultitoolGSaph", "battleaxeGSaph", "knifeGSaph", toolCrystal, "GSaph",
-				"Green Sapphire", GSaph, 0);
-		createToolSet(config, "pickaxeSteel", "axeSteel", "shovelSteel", "hoeSteel", "swordSteel", "MultitoolSteel", "battleaxeSteel", "knifeSteel", toolSteel, "Steel", "Steel", steel, 0);
-		createToolSet(config, "pickaxeTitanium", "axeTitanium", "shovelTitanium", "hoeTitanium", "swordTitanium", "MultitoolTitanium", "battleaxeTitanium", "knifeTitanium", toolTitanium, "Titanium",
-				"Titanium", titanium, 0);
-		createToolSet(config, "pickaxeEnd", "axeEnd", "shovelEnd", "hoeEnd", "swordEnd", "MultitoolEnd", "battleaxeEndium", "knifeEndium", toolEnd, "End", "Endium", enderium, 0);
-		createToolSet(config, "pickaxeQuartz", "axeQuartz", "shovelQuartz", "hoeQuartz", "swordQuartz", "MultiToolQuartz", "battleaxeQuartz", "knifeQuartz", toolQuartz, "Quartz", "Quartz",
-				quartzIngot, 0);
-		createToolSet(config, "pickaxeCopper", "axeCopper", "shovelCopper", "hoeCopper", "swordCopper", "MultitoolCopper", "battleaxeCopper", "knifeCopper", toolMetal, "Copper", "Copper",
-				copperIngot, 0);
-		createToolSet(config, "pickaxeTin", "axeTin", "shovelTin", "hoeTin", "swordTin", "MultitoolTin", "battleaxeTin", "knifeTin", toolMetal, "Tin", "Tin", tinIngot, 0);
-		createToolSet(config, "pickaxeBronze", "axeBronze", "shovelBronze", "hoeBronze", "swordBronze", "MultitoolBronze", "battleaxeBronze", "knifeBronze", toolBronze, "Bronze", "Bronze",
-				bronzeIngot, 0);
+		createArmorSet(config, "Emerald", armorEmerald, "emerald", "Emerald", Item.emerald, 0);
+		createArmorSet(config, "Obsidian", armorObsidian, "obsidian", "Obsidian", obsidianPlate, 0);
+		createArmorSet(config, "Ruby", armorCrystal, "ruby", "Ruby", Ruby, 0);
+		createArmorSet(config, "YellowSaph", armorCrystal, "saphY", "Yellow Sapphire", YSaph, 0);
+		createArmorSet(config, "GreenSaph", armorCrystal, "saphG", "Green Sapphire", GSaph, 0);
+		createArmorSet(config, "BlueSaph", armorCrystal, "saphB", "Blue Sapphire", BSaph, 0);
+		createArmorSet(config, "Stone", armorStone, "stone", "Stone", Block.stone, 0);
+		createArmorSet(config, "Wood", armorWood, "wood", "Wooden", Block.planks, 0);
+		createArmorSet(config, "WoodJungle", armorWood, "wood_jungle", "Wooden", Block.planks, 3);
+		createArmorSet(config, "WoodSpruce", armorWood, "wood_spruce", "Wooden", Block.planks, 1);
+		createArmorSet(config, "WoodBirch", armorWood, "wood_birch", "Wooden", Block.planks, 2);
+		createArmorSet(config, "Steel", armorSteel, "steel", "Steel", steel, 0);
+		createArmorSet(config, "Titanium", armorTitanium, "titanium", "Titanium", titanium, 0);
+		createArmorSet(config, "End", armorEnd, "end", "Endium", enderium, 0);
+		createArmorSet(config, "Quartz", armorQuartz, "quarts", "Quartz", quartzIngot, 0);
+		createArmorSet(config, "Copper", armorMetal, "copper", "Copper", copperIngot, 0);
+		createArmorSet(config, "Tin", armorMetal, "tin", "Tin", tinIngot, 0);
+		createArmorSet(config, "Bronze", armorBronze, "bronze", "Bronze", bronzeIngot, 0);
+		createToolSet(config, "Emerald", toolEmerald, "Emerald", "Emerald", Item.emerald, 0);
+		createToolSet(config, "Obsidian", toolObsidian, "Obsidian", "Obsidian", obsidianPlate, 0);
+		createToolSet(config, "Ruby", toolCrystal, "RSaph", "Ruby", Ruby, 0);
+		createToolSet(config, "YellowSaph", toolCrystal, "YSaph", "Yellow Sapphire", YSaph, 0);
+		createToolSet(config, "BlueSaph", toolCrystal, "BSaph", "Blue Sapphire", BSaph, 0);
+		createToolSet(config, "GreenSaph", toolCrystal, "GSaph", "Green Sapphire", GSaph, 0);
+		createToolSet(config, "Steel", toolSteel, "Steel", "Steel", steel, 0);
+		createToolSet(config, "Titanium", toolTitanium, "Titanium", "Titanium", titanium, 0);
+		createToolSet(config, "End", toolEnd, "End", "Endium", enderium, 0);
+		createToolSet(config, "Quartz", toolQuartz, "Quartz", "Quartz", quartzIngot, 0);
+		createToolSet(config, "Copper", toolMetal, "Copper", "Copper", copperIngot, 0);
+		createToolSet(config, "Tin", toolMetal, "Tin", "Tin", tinIngot, 0);
+		createToolSet(config, "Bronze", toolBronze, "Bronze", "Bronze", bronzeIngot, 0);
 	}
 
 	public static int ConfigBlock(Configuration config, String name) {
@@ -627,7 +605,7 @@ public class MoreMinecraft {
 		GameRegistry.addRecipe(new ItemStack(chipTeleportation), "CXC", "XVX", "CXC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', diamondEnderpearl);
 		GameRegistry.addRecipe(new ItemStack(diamondEnderpearl), "XXX", "XCX", "XXX", 'X', nuggetDiamond, 'C', Item.enderPearl);
 		GameRegistry.addRecipe(new ItemStack(enderStaff), " A ", " B ", " C ", 'A', diamondEnderpearl, 'B', chipTeleportation, 'C', Item.stick);
-		GameRegistry.addRecipe(new ItemStack(chipEject), "CXC", "XVX", "CXC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', Block.pistonBase, 1);
+		GameRegistry.addRecipe(new ItemStack(chipEject), "CXC", "XVX", "CXC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', Block.pistonBase);
 		GameRegistry.addRecipe(new ItemStack(unattunedLauncher, 1), "CCC", "BXV", "CCC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', chipEject, 'B', Block.stoneButton);
 		GameRegistry.addRecipe(new ItemStack(unattunedLauncher, 1), "CCC", "VXB", "CCC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', chipEject, 'B', Block.stoneButton);
 		GameRegistry.addRecipe(new ItemStack(quartzIngot), " C ", "CXC", " C ", 'X', Item.ingotIron, 'C', Item.netherQuartz);
