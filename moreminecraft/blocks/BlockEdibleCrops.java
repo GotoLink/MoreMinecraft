@@ -7,12 +7,12 @@ import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class Crop extends BlockCrops {
+public class BlockEdibleCrops extends BlockCrops {
 	@SideOnly(Side.CLIENT)
 	private Icon[] iconArray;
 	private boolean isTurnip;
 
-	public Crop(int id, boolean isTurnip) {
+	public BlockEdibleCrops(int id, boolean isTurnip) {
 		super(id);
 		this.isTurnip = isTurnip;
 	}
@@ -35,7 +35,7 @@ public class Crop extends BlockCrops {
 	public void registerIcons(IconRegister par1IconRegister) {
 		this.iconArray = new Icon[4];
 		for (int i = 0; i < this.iconArray.length; ++i) {
-			this.iconArray[i] = par1IconRegister.registerIcon(MoreMinecraft.modID + ":" + this.getUnlocalizedName() + "_" + i);
+			this.iconArray[i] = par1IconRegister.registerIcon(MoreMinecraft.modID + ":" + this.getTextureName() + "_" + i);
 		}
 	}
 

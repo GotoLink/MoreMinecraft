@@ -2,12 +2,12 @@ package moreminecraft.blocks;
 
 import java.util.Random;
 
-public class BlockOreNether extends BasicBlock {
+public class BlockOreDimensional extends BasicBlock {
 	int quanity;
 	int typeID;
 	int metadata;
 
-	public BlockOreNether(int id, int par2, int par3, int par4) {
+	public BlockOreDimensional(int id, int par2, int par3, int par4) {
 		super(id);
 		typeID = par2;
 		quanity = par3;

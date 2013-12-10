@@ -15,8 +15,8 @@ import net.minecraft.world.World;
 public class ItemArmorRedstoneMod extends ItemArmor {
 	String armorFile;
 
-	public ItemArmorRedstoneMod(int par1, EnumArmorMaterial par2EnumArmorMaterial, int par3, int par4, String armorFile) {
-		super(par1, par2EnumArmorMaterial, par3, par4);
+	public ItemArmorRedstoneMod(int par1, EnumArmorMaterial par2EnumArmorMaterial, int par4, String armorFile) {
+		super(par1, par2EnumArmorMaterial, 0, par4);
 		this.armorFile = armorFile;
 		setCreativeTab(MoreMinecraft.tabMisc);
 	}
@@ -63,7 +63,7 @@ public class ItemArmorRedstoneMod extends ItemArmor {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
-		return "moreminecraft:" + armorFile + ".png";
+		return "moreminecraft:" + armorFile + (slot == 2 ? "_2" : "_1") + ".png";
 	}
 
 	@Override

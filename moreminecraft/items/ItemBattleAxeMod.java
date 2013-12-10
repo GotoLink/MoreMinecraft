@@ -22,7 +22,7 @@ public class ItemBattleAxeMod extends ItemTool {
 
 	public ItemBattleAxeMod(int par1, EnumToolMaterial par2EnumToolMaterial) {
 		super(par1, 3.0F, par2EnumToolMaterial, blocksEffectiveAgainst);
-		this.setCreativeTab(MoreMinecraft.tabMisc);
+		this.setCreativeTab(MoreMinecraft.tabTools);
 		this.weaponDamage = 4.0F + par2EnumToolMaterial.getDamageVsEntity() + 2;
 	}
 

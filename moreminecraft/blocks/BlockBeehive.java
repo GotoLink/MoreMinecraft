@@ -6,8 +6,8 @@ import moreminecraft.MoreMinecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
-public class Beehive extends Block {
-	public Beehive(int id) {
+public class BlockBeehive extends Block {
+	public BlockBeehive(int id) {
 		super(id, Material.air);
 		this.setHardness(0.1F);
 		this.setResistance(0);

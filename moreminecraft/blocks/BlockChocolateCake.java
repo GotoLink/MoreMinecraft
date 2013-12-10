@@ -47,10 +47,10 @@ public class BlockChocolateCake extends BlockCake {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
-		this.blockIcon = par1IconRegister.registerIcon("moreminecraft:" + this.getUnlocalizedName() + "_side");
-		this.cakeSliceSide = par1IconRegister.registerIcon("moreminecraft:" + this.getUnlocalizedName() + "_inner");
-		this.cakeTopIcon = par1IconRegister.registerIcon("moreminecraft:" + this.getUnlocalizedName() + "_top");
-		this.cakeBottomIcon = par1IconRegister.registerIcon("moreminecraft:" + this.getUnlocalizedName() + "_bottom");
+		this.blockIcon = par1IconRegister.registerIcon(this.getTextureName() + "_side");
+		this.cakeSliceSide = par1IconRegister.registerIcon(this.getTextureName() + "_inner");
+		this.cakeTopIcon = par1IconRegister.registerIcon(this.getTextureName() + "_top");
+		this.cakeBottomIcon = par1IconRegister.registerIcon(this.getTextureName() + "_bottom");
 	}
 
 	/**

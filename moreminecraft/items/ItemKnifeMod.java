@@ -15,7 +15,7 @@ public class ItemKnifeMod extends ItemSword {
 		super(par1, par2EnumToolMaterial);
 		this.toolMaterial = par2EnumToolMaterial;
 		this.weaponDamage = 4.0F + par2EnumToolMaterial.getDamageVsEntity() / 2 - 2;
-		this.setCreativeTab(MoreMinecraft.tabMisc);
+		this.setCreativeTab(MoreMinecraft.tabTools);
 	}
 
 	@Override

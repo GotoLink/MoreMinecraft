@@ -13,7 +13,7 @@ public class ItemMultitoolMod extends ItemTool {
 
 	public ItemMultitoolMod(int par1, EnumToolMaterial par2EnumToolMaterial) {
 		super(par1, 2, par2EnumToolMaterial, blocksEffectiveAgainst);
-		setCreativeTab(MoreMinecraft.tabMisc);
+		setCreativeTab(MoreMinecraft.tabTools);
 	}
 
 	@Override
