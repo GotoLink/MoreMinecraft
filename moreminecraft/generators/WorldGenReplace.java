@@ -9,15 +9,17 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 public class WorldGenReplace extends WorldGenerator {
 	/** The block ID of the ore to be placed using this generator. */
 	private int minableBlockId;
+	private int minableBlockMeta;
 	/** The number of blocks to generate. */
 	private int numberOfBlocks;
 	/** The block ID of the target block to be replace. */
 	private int toReplace;
 
-	public WorldGenReplace(int par1, int par2, int par3) {
+	public WorldGenReplace(int par1, int par2, int par3, int par4) {
 		this.minableBlockId = par1;
-		this.numberOfBlocks = par2;
-		this.toReplace = par3;
+		this.minableBlockMeta = par2;
+		this.numberOfBlocks = par3;
+		this.toReplace = par4;
 	}
 
 	@Override
@@ -51,7 +53,7 @@ public class WorldGenReplace extends WorldGenerator {
 							for (int var44 = var34; var44 <= var37; ++var44) {
 								double var45 = (var44 + 0.5D - var24) / (var28 / 2.0D);
 								if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D && par1World.getBlockId(var38, var41, var44) == toReplace) {
-									par1World.setBlock(var38, var41, var44, this.minableBlockId, 0, 2);
+									par1World.setBlock(var38, var41, var44, this.minableBlockId, this.minableBlockMeta, 2);
 								}
 							}
 						}

@@ -26,6 +26,6 @@ public class BlockOreDimensional extends BasicBlock {
 
 	@Override
 	public int quantityDropped(Random rand) {
-		return rand.nextInt(quanity) + 1;
+		return quanity > 0 ? rand.nextInt(quanity) : 0 + 1;
 	}
 }

@@ -17,7 +17,7 @@ public class BlockBeehive extends Block {
 
 	@Override
 	public int idDropped(int i, Random rand, int j) {
-		return MoreMinecraft.honey.itemID;
+		return MoreMinecraft.materials.itemID;
 	}
 
 	@Override
