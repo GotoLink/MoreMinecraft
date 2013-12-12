@@ -14,7 +14,7 @@ public class ItemKnifeMod extends ItemSword {
 	public ItemKnifeMod(int par1, EnumToolMaterial par2EnumToolMaterial) {
 		super(par1, par2EnumToolMaterial);
 		this.toolMaterial = par2EnumToolMaterial;
-		this.weaponDamage = 4.0F + par2EnumToolMaterial.getDamageVsEntity() / 2 - 2;
+		this.weaponDamage = 2.0F + par2EnumToolMaterial.getDamageVsEntity() / 2;
 		this.setCreativeTab(MoreMinecraft.tabTools);
 	}
 

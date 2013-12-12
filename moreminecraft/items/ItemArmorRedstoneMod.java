@@ -2,23 +2,17 @@ package moreminecraft.items;
 
 import moreminecraft.MoreMinecraft;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class ItemArmorRedstoneMod extends ItemArmor {
-	String armorFile;
-
+public class ItemArmorRedstoneMod extends ItemArmorMod {
 	public ItemArmorRedstoneMod(int par1, EnumArmorMaterial par2EnumArmorMaterial, int par4, String armorFile) {
-		super(par1, par2EnumArmorMaterial, 0, par4);
-		this.armorFile = armorFile;
-		setCreativeTab(MoreMinecraft.tabMisc);
+		super(par1, par2EnumArmorMaterial, par4, armorFile);
 	}
 
 	public void addPotionWhenEquiped(Item item, EntityPlayer player, int type, int potID, int potTick, int potStrong) {
@@ -59,11 +53,6 @@ public class ItemArmorRedstoneMod extends ItemArmor {
 				player.addPotionEffect(new PotionEffect(potID, potTick, potStrong));
 			}
 		}
-	}
-
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
-		return "moreminecraft:" + armorFile + (slot == 2 ? "_2" : "_1") + ".png";
 	}
 
 	@Override
