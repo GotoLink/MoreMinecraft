@@ -18,15 +18,13 @@ public class EntityBear extends EntityMob {
 		super(par1World);
 		this.setSize(0.9F, 1.3F);
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(2, new EntityAISwimming(this));
-		this.tasks.addTask(3, new EntityAIAttackOnCollide(this, EntityPlayer.class, 12.0F, true));
-		this.tasks.addTask(4, new EntityAIWander(this, 1.0D));
-		this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-		this.tasks.addTask(6, new EntityAIMoveTowardsRestriction(this, 12.0F));
+		this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 12.0F, true));
+		this.tasks.addTask(3, new EntityAIWander(this, 1.0D));
+		this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+		this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 12.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-		this.setRevengeTarget(this);
 	}
 
 	@Override
@@ -37,22 +35,17 @@ public class EntityBear extends EntityMob {
 
 	@Override
 	protected String getDeathSound() {
-		return "mob.cow.hurt";
-	}
-
-	@Override
-	protected int getDropItemId() {
-		return -1;
+		return "BearHurt";
 	}
 
 	@Override
 	protected String getHurtSound() {
-		return "mob.cow.hurt";
+		return "BearHurt";
 	}
 
 	@Override
 	protected String getLivingSound() {
-		return "mob.cow.say";
+		return "BearIdle";
 	}
 
 	@Override

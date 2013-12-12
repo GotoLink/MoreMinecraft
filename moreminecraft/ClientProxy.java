@@ -15,5 +15,6 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBakedPotatoLaunched.class, new RenderSnowball(Item.bakedPotato));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPotatoLaunched.class, new RenderSnowball(Item.potato));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDiamondEnderpearl.class, new RenderSnowball(MoreMinecraft.diamondEnderpearl));
+		//RenderingRegistry.registerEntityRenderingHandler(EntityBear.class,...);
 	}
 }
