@@ -22,7 +22,7 @@ public class BlockGem extends BasicBlock {
 	private static final int[] chances = { 2, 1, 4 };//dimensions:(-1/0/1),
 	private static final int[] dropMeta = { 20, 21, 22, 23, 4 };
 	protected static final int[] drops = { Item.dyePowder.itemID, Item.coal.itemID, Item.redstone.itemID, Item.diamond.itemID };
-	public static final String[] names = { "Ruby", "BSaph", "GSaph", "YSaph", "Lapis", "Coal", "Redstone", "Diamond" };
+	private final String[] names = { "Ruby", "BSaph", "GSaph", "YSaph", "Lapis", "Coal", "Redstone", "Diamond" };
 	private Icon[] icons;
 
 	public BlockGem(int id) {
@@ -88,9 +88,14 @@ public class BlockGem extends BasicBlock {
 	}
 
 	@Override
+	public String[] getNames() {
+		return names;
+	}
+
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		for (int i = 0, j = 0; i < names.length; i++) {
+		for (int i = 0; i < names.length; i++) {
 			par3List.add(new ItemStack(par1, 1, i));
 		}
 	}

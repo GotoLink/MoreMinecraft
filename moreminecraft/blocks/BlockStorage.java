@@ -13,7 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockStorage extends BasicBlock {
 	private Icon[] icon;
-	public String[] names;
+	private String[] names;
 
 	public BlockStorage(int id, String... names) {
 		super(id);
@@ -30,6 +30,11 @@ public class BlockStorage extends BasicBlock {
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int meta) {
 		return this.icon[meta];
+	}
+
+	@Override
+	public String[] getNames() {
+		return names;
 	}
 
 	@Override

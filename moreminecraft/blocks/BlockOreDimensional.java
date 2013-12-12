@@ -1,31 +1,63 @@
 package moreminecraft.blocks;
 
+import java.util.List;
 import java.util.Random;
 
-public class BlockOreDimensional extends BasicBlock {
-	int quanity;
-	int typeID;
-	int metadata;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import moreminecraft.MoreMinecraft;
+import moreminecraft.items.ItemBlockWithMetaNamed;
 
-	public BlockOreDimensional(int id, int par2, int par3, int par4) {
+public class BlockOreDimensional extends BasicBlock {
+	private String[] names;
+	private Icon[] icons;
+
+	public BlockOreDimensional(int id, String... names) {
 		super(id);
-		typeID = par2;
-		quanity = par3;
-		metadata = par4;
+		this.names = names;
+		Item.itemsList[id] = new ItemBlockWithMetaNamed(id - 256, this);
 	}
 
 	@Override
 	public int damageDropped(int i) {
-		return metadata;
+		return i == 0 || i == 1 ? 24 : i;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int side, int meta) {
+		return icons[meta];
+	}
+
+	@Override
+	public String[] getNames() {
+		return names;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+		for (int i = 0; i < names.length; i++) {
+			par3List.add(new ItemStack(par1, 1, i));
+		}
 	}
 
 	@Override
 	public int idDropped(int i, Random rand, int j) {
-		return typeID;
+		return i == 0 || i == 1 ? MoreMinecraft.materials.itemID : this.blockID;
 	}
 
 	@Override
-	public int quantityDropped(Random rand) {
-		return quanity > 0 ? rand.nextInt(quanity) : 0 + 1;
+	public void registerIcons(IconRegister par1IconRegister) {
+		icons = new Icon[names.length];
+		icons[0] = par1IconRegister.registerIcon(MoreMinecraft.modID + ":" + names[0]);
+		for (int i = 1; i < names.length; i++) {
+			icons[i] = par1IconRegister.registerIcon(MoreMinecraft.modID + ":ore" + names[i]);
+		}
 	}
 }

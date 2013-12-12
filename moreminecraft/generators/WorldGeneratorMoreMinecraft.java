@@ -31,7 +31,7 @@ public class WorldGeneratorMoreMinecraft implements IWorldGenerator {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(31);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenReplace(MoreMinecraft.oreEnderium.blockID, 0, 4, Block.whiteStone.blockID).generate(world, random, X, Y, Z);
+			new WorldGenReplace(MoreMinecraft.oreDimensional.blockID, 1, 4, Block.whiteStone.blockID).generate(world, random, X, Y, Z);
 		}
 		for (int i = 0; i < 11; i++) {
 			int X = chunkX + random.nextInt(16);
@@ -55,19 +55,19 @@ public class WorldGeneratorMoreMinecraft implements IWorldGenerator {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(41);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenReplace(MoreMinecraft.oreTitaniumEnd.blockID, 0, 10, Block.whiteStone.blockID).generate(world, random, X, Y, Z);
+			new WorldGenReplace(MoreMinecraft.oreDimensional.blockID, 8, 10, Block.whiteStone.blockID).generate(world, random, X, Y, Z);
 		}
 		for (int i = 0; i < 7; i++) {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(41);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenReplace(MoreMinecraft.tinOreEnd.blockID, 0, 9, Block.whiteStone.blockID).generate(world, random, X, Y, Z);
+			new WorldGenReplace(MoreMinecraft.oreDimensional.blockID, 14, 9, Block.whiteStone.blockID).generate(world, random, X, Y, Z);
 		}
 		for (int i = 0; i < 7; i++) {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(41);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenReplace(MoreMinecraft.copperOreEnd.blockID, 0, 10, Block.whiteStone.blockID).generate(world, random, X, Y, Z);
+			new WorldGenReplace(MoreMinecraft.oreDimensional.blockID, 11, 10, Block.whiteStone.blockID).generate(world, random, X, Y, Z);
 		}
 		for (int i = 0; i < 11; i++) {
 			int X = chunkX + random.nextInt(16);
@@ -79,13 +79,13 @@ public class WorldGeneratorMoreMinecraft implements IWorldGenerator {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(39);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenReplace(MoreMinecraft.oreIronEnd.blockID, 0, 16, Block.whiteStone.blockID).generate(world, random, X, Y, Z);
+			new WorldGenReplace(MoreMinecraft.oreDimensional.blockID, 3, 16, Block.whiteStone.blockID).generate(world, random, X, Y, Z);
 		}
 		for (int i = 0; i < 7; i++) {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(32);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenReplace(MoreMinecraft.oreGoldEnd.blockID, 0, 16, Block.whiteStone.blockID).generate(world, random, X, Y, Z);
+			new WorldGenReplace(MoreMinecraft.oreDimensional.blockID, 5, 16, Block.whiteStone.blockID).generate(world, random, X, Y, Z);
 		}
 		for (int i = 0; i < 8; i++) {
 			int X = chunkX + random.nextInt(16);
@@ -131,19 +131,19 @@ public class WorldGeneratorMoreMinecraft implements IWorldGenerator {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(256);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenReplace(MoreMinecraft.oreTitaniumNether.blockID, 0, 5, Block.netherrack.blockID).generate(world, random, X, Y, Z);
+			new WorldGenReplace(MoreMinecraft.oreDimensional.blockID, 7, 5, Block.netherrack.blockID).generate(world, random, X, Y, Z);
 		}
 		for (int i = 0; i < 17; i++) {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(256);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenReplace(MoreMinecraft.tinOreNether.blockID, 0, 4, Block.netherrack.blockID).generate(world, random, X, Y, Z);
+			new WorldGenReplace(MoreMinecraft.oreDimensional.blockID, 13, 4, Block.netherrack.blockID).generate(world, random, X, Y, Z);
 		}
 		for (int i = 0; i < 17; i++) {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(256);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenReplace(MoreMinecraft.copperOreNether.blockID, 0, 5, Block.netherrack.blockID).generate(world, random, X, Y, Z);
+			new WorldGenReplace(MoreMinecraft.oreDimensional.blockID, 10, 5, Block.netherrack.blockID).generate(world, random, X, Y, Z);
 		}
 		for (int i = 0; i < 21; i++) {
 			int X = chunkX + random.nextInt(16);
@@ -155,13 +155,13 @@ public class WorldGeneratorMoreMinecraft implements IWorldGenerator {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(256);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenReplace(MoreMinecraft.oreIronNether.blockID, 0, 8, Block.netherrack.blockID).generate(world, random, X, Y, Z);
+			new WorldGenReplace(MoreMinecraft.oreDimensional.blockID, 2, 8, Block.netherrack.blockID).generate(world, random, X, Y, Z);
 		}
 		for (int i = 0; i < 14; i++) {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(64);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenReplace(MoreMinecraft.oreGoldNether.blockID, 0, 8, Block.netherrack.blockID).generate(world, random, X, Y, Z);
+			new WorldGenReplace(MoreMinecraft.oreDimensional.blockID, 4, 8, Block.netherrack.blockID).generate(world, random, X, Y, Z);
 		}
 		for (int i = 0; i < 17; i++) {
 			int X = chunkX + random.nextInt(16);
@@ -219,19 +219,19 @@ public class WorldGeneratorMoreMinecraft implements IWorldGenerator {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(36);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenMinable(MoreMinecraft.oreTitanium.blockID, 5).generate(world, random, X, Y, Z);
+			new WorldGenMinable(MoreMinecraft.oreDimensional.blockID, 6, 5, Block.stone.blockID).generate(world, random, X, Y, Z);
 		}
 		for (int i = 0; i < 17; i++) {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(45);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenMinable(MoreMinecraft.tinOre.blockID, 4).generate(world, random, X, Y, Z);
+			new WorldGenMinable(MoreMinecraft.oreDimensional.blockID, 12, 4, Block.stone.blockID).generate(world, random, X, Y, Z);
 		}
 		for (int i = 0; i < 17; i++) {
 			int X = chunkX + random.nextInt(16);
 			int Y = random.nextInt(45);
 			int Z = chunkZ + random.nextInt(16);
-			new WorldGenMinable(MoreMinecraft.copperOre.blockID, 5).generate(world, random, X, Y, Z);
+			new WorldGenMinable(MoreMinecraft.oreDimensional.blockID, 9, 5, Block.stone.blockID).generate(world, random, X, Y, Z);
 		}
 	}
 }

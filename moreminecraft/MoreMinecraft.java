@@ -54,21 +54,7 @@ public class MoreMinecraft {
 	};
 	public static Block ores;
 	public static Block storage;
-	public static Block oreTitanium;
-	public static Block oreEnderium;
-	public static Block enderiumBlock;
-	public static Block oreIronNether;
-	public static Block oreIronEnd;
-	public static Block oreGoldNether;
-	public static Block oreGoldEnd;
-	public static Block oreTitaniumNether;
-	public static Block oreTitaniumEnd;
-	public static Block copperOre;
-	public static Block tinOre;
-	public static Block copperOreNether;
-	public static Block tinOreNether;
-	public static Block copperOreEnd;
-	public static Block tinOreEnd;
+	public static Block oreDimensional;
 	public static Block beeHive;
 	public static Block turnipCrop;
 	public static Block cornCrop;
@@ -480,7 +466,7 @@ public class MoreMinecraft {
 		GameRegistry.addShapelessRecipe(new ItemStack(materials, 1, 1), Item.bucketMilk);
 		GameRegistry.addShapelessRecipe(new ItemStack(foods), new ItemStack(materials, 1, 1), Item.bread);
 		GameRegistry.addShapelessRecipe(new ItemStack(foods, 1, 1), materials, Item.bread);
-		GameRegistry.addShapelessRecipe(new ItemStack(materials, 9, 24), enderiumBlock);
+		GameRegistry.addShapelessRecipe(new ItemStack(materials, 9, 24), oreDimensional);
 		GameRegistry.addShapelessRecipe(new ItemStack(materials, 9, 20), storage);
 		GameRegistry.addShapelessRecipe(new ItemStack(materials, 9, 22), new ItemStack(storage, 1, 2));
 		GameRegistry.addShapelessRecipe(new ItemStack(materials, 9, 23), new ItemStack(storage, 1, 3));
@@ -493,7 +479,7 @@ public class MoreMinecraft {
 		GameRegistry.addRecipe(new ItemStack(storage, 1, 1), "XXX", "XXX", "XXX", 'X', new ItemStack(materials, 1, 21));
 		GameRegistry.addRecipe(new ItemStack(storage, 1, 2), "XXX", "XXX", "XXX", 'X', new ItemStack(materials, 1, 22));
 		GameRegistry.addRecipe(new ItemStack(storage), "XXX", "XXX", "XXX", 'X', new ItemStack(materials, 1, 20));
-		GameRegistry.addRecipe(new ItemStack(enderiumBlock), "XXX", "XXX", "XXX", 'X', new ItemStack(materials, 1, 24));
+		GameRegistry.addRecipe(new ItemStack(oreDimensional), "XXX", "XXX", "XXX", 'X', new ItemStack(materials, 1, 24));
 		GameRegistry.addRecipe(new ItemStack(storage, 1, 7), "XXX", "XXX", "XXX", 'X', new ItemStack(materials, 1, 14));
 		GameRegistry.addRecipe(new ItemStack(storage, 1, 9), "XXX", "XXX", "XXX", 'X', new ItemStack(materials, 1, 18));
 		GameRegistry.addRecipe(new ItemStack(storage, 1, 8), "XXX", "XXX", "XXX", 'X', new ItemStack(materials, 1, 17));
@@ -512,21 +498,21 @@ public class MoreMinecraft {
 		GameRegistry.addShapelessRecipe(new ItemStack(foods, 1, 4), Item.bucketMilk, Item.sugar, Item.egg, Item.wheat);
 		GameRegistry.addRecipe(new ItemStack(materials, 1, 5), " C ", "CXC", " C ", 'X', Item.ingotIron, 'C', Item.coal);
 		//FURNACE
-		GameRegistry.addSmelting(oreTitanium.blockID, new ItemStack(materials, 1, 4), 0.5F);
 		FurnaceRecipes.smelting().addSmelting(materials.itemID, 5, new ItemStack(materials, 1, 3), 3.5F);
-		GameRegistry.addSmelting(turnip.itemID, new ItemStack(foods, 1, 3), 1.5F);
-		GameRegistry.addSmelting(oreTitaniumNether.blockID, new ItemStack(materials, 2, 4), 3F);
-		GameRegistry.addSmelting(oreIronNether.blockID, new ItemStack(Item.ingotIron, 2), 3F);
-		GameRegistry.addSmelting(oreGoldNether.blockID, new ItemStack(Item.ingotGold, 2), 3F);
-		GameRegistry.addSmelting(oreTitaniumEnd.blockID, new ItemStack(materials, 4, 4), 6F);
-		GameRegistry.addSmelting(oreIronEnd.blockID, new ItemStack(Item.ingotIron, 4), 6F);
-		GameRegistry.addSmelting(oreGoldEnd.blockID, new ItemStack(Item.ingotGold, 4), 6F);
-		GameRegistry.addSmelting(tinOre.blockID, new ItemStack(materials, 1, 18), 0.5F);
-		GameRegistry.addSmelting(copperOre.blockID, new ItemStack(materials, 1, 17), 0.5F);
-		GameRegistry.addSmelting(copperOreNether.blockID, new ItemStack(materials, 2, 17), 3F);
-		GameRegistry.addSmelting(tinOreNether.blockID, new ItemStack(materials, 2, 18), 3F);
-		GameRegistry.addSmelting(copperOreEnd.blockID, new ItemStack(materials, 4, 17), 6F);
-		GameRegistry.addSmelting(tinOreEnd.blockID, new ItemStack(materials, 4, 18), 6F);
+		FurnaceRecipes.smelting().addSmelting(turnip.itemID, new ItemStack(foods, 1, 3), 1.5F);
+		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 2, new ItemStack(Item.ingotIron, 2), 3F);
+		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 3, new ItemStack(Item.ingotIron, 4), 6F);
+		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 4, new ItemStack(Item.ingotGold, 2), 3F);
+		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 5, new ItemStack(Item.ingotGold, 4), 6F);
+		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 6, new ItemStack(materials, 1, 4), 0.5F);
+		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 7, new ItemStack(materials, 2, 4), 3F);
+		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 8, new ItemStack(materials, 4, 4), 6F);
+		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 9, new ItemStack(materials, 1, 17), 0.5F);
+		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 10, new ItemStack(materials, 2, 17), 3F);
+		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 11, new ItemStack(materials, 4, 17), 6F);
+		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 12, new ItemStack(materials, 1, 18), 0.5F);
+		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 13, new ItemStack(materials, 2, 18), 3F);
+		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 14, new ItemStack(materials, 4, 18), 6F);
 		//PAXLES
 		GameRegistry.addRecipe(new ItemStack(MultitoolWood), "ABC", " # ", " # ", '#', new ItemStack(Item.stick), 'A', new ItemStack(Item.axeWood), 'B', new ItemStack(Item.shovelWood), 'C',
 				new ItemStack(Item.pickaxeWood));
@@ -555,17 +541,16 @@ public class MoreMinecraft {
 		GameRegistry.addRecipe(new ItemStack(unattunedLauncher, 1), "CCC", "VXB", "CCC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', new ItemStack(materials, 1, 13), 'B', Block.stoneButton);
 		GameRegistry.addRecipe(new ItemStack(materials, 1, 14), " C ", "CXC", " C ", 'X', Item.ingotIron, 'C', Item.netherQuartz);
 		GameRegistry.addRecipe(new ItemStack(materials, 1, 15), "CXC", "XVX", "CXC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', Block.blockRedstone);
-		GameRegistry.addRecipe(new ItemStack(scubaHelmet, 1), "CXC", "CVC", 'X', new ItemStack(materials, 1, 15), 'C', Item.ingotIron, 'V', Block.glass);
-		GameRegistry.addRecipe(new ItemStack(jumpBoots, 1), "V V", "C C", 'C', new ItemStack(materials, 1, 13), 'V', Block.cobblestone);
-		GameRegistry.addRecipe(new ItemStack(legsSwiftness, 1), "VAV", "C C", "V V", 'A', new ItemStack(materials, 1, 11), 'V', Item.ingotIron, 'C', new ItemStack(materials, 1, 16));
+		GameRegistry.addRecipe(new ItemStack(scubaHelmet), "CXC", "CVC", 'X', new ItemStack(materials, 1, 15), 'C', Item.ingotIron, 'V', Block.glass);
+		GameRegistry.addRecipe(new ItemStack(jumpBoots), "V V", "C C", 'C', new ItemStack(materials, 1, 13), 'V', Block.cobblestone);
+		GameRegistry.addRecipe(new ItemStack(legsSwiftness), "VAV", "C C", "V V", 'A', new ItemStack(materials, 1, 11), 'V', Item.ingotIron, 'C', new ItemStack(materials, 1, 16));
 		GameRegistry.addRecipe(new ItemStack(materials, 1, 16), "VV ", "AAV", "VV ", 'V', Item.ingotIron, 'A', Item.redstone);
 		GameRegistry.addRecipe(new ItemStack(materials, 1, 16), " VV", "VAA", " VV", 'V', Item.ingotIron, 'A', Item.redstone);
-		GameRegistry.addShapelessRecipe(new ItemStack(potatoLauncher, 1), Item.potato, unattunedLauncher);
-		GameRegistry.addShapelessRecipe(new ItemStack(potatoLauncher, 1), Item.bakedPotato, unattunedLauncher);
-		GameRegistry.addShapelessRecipe(new ItemStack(potatoLauncher, 1), Item.poisonousPotato, unattunedLauncher);
-		GameRegistry.addShapelessRecipe(new ItemStack(arrowLauncher, 1), Item.arrow, unattunedLauncher);
-		GameRegistry.addRecipe(new ItemStack(itemChocolateCake, 1), "AAA", "BCB", "DED", 'A', Item.bucketMilk, 'B', Item.sugar, 'C', Item.egg, 'D', Item.wheat, 'E',
-				new ItemStack(Item.dyePowder, 1, 3));
+		GameRegistry.addShapelessRecipe(new ItemStack(potatoLauncher), Item.potato, unattunedLauncher);
+		GameRegistry.addShapelessRecipe(new ItemStack(potatoLauncher), Item.bakedPotato, unattunedLauncher);
+		GameRegistry.addShapelessRecipe(new ItemStack(potatoLauncher), Item.poisonousPotato, unattunedLauncher);
+		GameRegistry.addShapelessRecipe(new ItemStack(arrowLauncher), Item.arrow, unattunedLauncher);
+		GameRegistry.addRecipe(new ItemStack(itemChocolateCake), "AAA", "BCB", "DED", 'A', Item.bucketMilk, 'B', Item.sugar, 'C', Item.egg, 'D', Item.wheat, 'E', new ItemStack(Item.dyePowder, 1, 3));
 		GameRegistry.addRecipe(new ItemStack(battleaxeDiamond), "XXX", "XCX", " C ", 'X', Item.diamond, 'C', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(battleaxeGold), "XXX", "XCX", " C ", 'X', Item.ingotGold, 'C', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(battleaxeIron), "XXX", "XCX", " C ", 'X', Item.ingotIron, 'C', Item.stick);
@@ -620,23 +605,10 @@ public class MoreMinecraft {
 		knifeDiamond = new ItemKnifeMod(ConfigItem(config, "Diamond Knife"), EnumToolMaterial.EMERALD).setUnlocalizedName("knifeDiamond").setTextureName(modID + ":tools/knifeDiamond");
 		storage = new BlockStorage(ConfigBlock(config, "Storage Block"), "RSaphBlock", "BSaphBlock", "GSaphBlock", "YSaphBlock", "blockSteel", "blockTitanium", "carbonatedIronBlock", "blockQuartz",
 				"blockCopper", "blockTin", "blockBronze").setTextureName(modID + ":");
-		oreTitanium = new BasicBlock(ConfigBlock(config, "Titanium Ore")).setUnlocalizedName("oreTitanium").setTextureName(modID + ":oreTitanium");
-		oreEnderium = new BlockOreDimensional(ConfigBlock(config, "Enderium Ore"), materials.itemID, 0, 24).setUnlocalizedName("endiumOre").setTextureName(modID + ":endiumOre");
-		enderiumBlock = new BlockOreDimensional(ConfigBlock(config, "Enderium Block"), materials.itemID, 0, 24).setUnlocalizedName("blockEnderium").setTextureName(modID + ":blockEnderium");
-		oreIronNether = new BasicBlock(ConfigBlock(config, "Nether Iron Ore")).setUnlocalizedName("oreIronNether").setTextureName(modID + ":oreIronNether");
-		oreIronEnd = new BasicBlock(ConfigBlock(config, "End Iron Ore")).setUnlocalizedName("oreIronEnd").setTextureName(modID + ":oreIronEnd");
-		oreGoldNether = new BasicBlock(ConfigBlock(config, "Nether Gold Ore")).setUnlocalizedName("oreGoldNether").setTextureName(modID + ":oreGoldNether");
-		oreGoldEnd = new BasicBlock(ConfigBlock(config, "End Gold Ore")).setUnlocalizedName("oreGoldEnd").setTextureName(modID + ":oreGoldEnd");
-		oreTitaniumNether = new BasicBlock(ConfigBlock(config, "Nether Titanium Ore")).setUnlocalizedName("oreTitaniumNether").setTextureName(modID + ":oreTitaniumNether");
-		oreTitaniumEnd = new BasicBlock(ConfigBlock(config, "End Titanium Ore")).setUnlocalizedName("oreTitaniumEnd").setTextureName(modID + ":oreTitaniumEnd");
+		oreDimensional = new BlockOreDimensional(ConfigBlock(config, "Dimension Ores"), "blockEnderium", "Endium", "IronNether", "IronEnd", "GoldNether", "GoldEnd", "Titanium", "TitaniumNether",
+				"TitaniumEnd", "Copper", "CopperNether", "CopperEnd", "Tin", "TinNether", "TinEnd");
 		beeHive = new BlockBeehive(ConfigBlock(config, "BeeHive")).setUnlocalizedName("beeHive").setTextureName(modID + ":beehive");
 		ores = new BlockGem(ConfigBlock(config, "Ores"));
-		copperOre = new BasicBlock(ConfigBlock(config, "Copper Ore")).setUnlocalizedName("oreCopper").setTextureName(modID + ":oreCopper");
-		tinOre = new BasicBlock(ConfigBlock(config, "Tin Ore")).setUnlocalizedName("oreTin").setTextureName(modID + ":oreTin");
-		copperOreEnd = new BasicBlock(ConfigBlock(config, "End Copper Ore")).setUnlocalizedName("oreCopperEnd").setTextureName(modID + ":oreCopperEnd");
-		tinOreEnd = new BasicBlock(ConfigBlock(config, "End Tin Ore")).setUnlocalizedName("oreTinEnd").setTextureName(modID + ":oreTinEnd");
-		copperOreNether = new BasicBlock(ConfigBlock(config, "Nether Copper Ore")).setUnlocalizedName("oreCopperNether").setTextureName(modID + ":oreCopperNether");
-		tinOreNether = new BasicBlock(ConfigBlock(config, "Nether Tin Ore")).setUnlocalizedName("oreTinNether").setTextureName(modID + ":oreTinNether");
 		chocolateCake = new BlockChocolateCake(ConfigBlock(config, "Chocolate Cake Block")).setHardness(0.5F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("choccake")
 				.setTextureName(modID + ":choccake");
 		itemChocolateCake = new ItemReed(ConfigItem(config, "Chocolate Cake Item"), chocolateCake).setCreativeTab(tabMisc).setUnlocalizedName("choccake").setTextureName(modID + ":choccake");

@@ -1,6 +1,6 @@
 package moreminecraft.items;
 
-import moreminecraft.blocks.BlockGem;
+import moreminecraft.IMultiNamed;
 import moreminecraft.blocks.BlockStorage;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlockWithMetadata;
@@ -17,9 +17,9 @@ public class ItemBlockWithMetaNamed extends ItemBlockWithMetadata {
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		if (block instanceof BlockStorage) {
-			return "tile." + ((BlockStorage) block).names[stack.getItemDamage()];
-		} else if (block instanceof BlockGem) {
-			return "tile.ore" + ((BlockGem) block).names[stack.getItemDamage()];
+			return "tile." + ((BlockStorage) block).getNames()[stack.getItemDamage()];
+		} else if (block instanceof IMultiNamed) {
+			return "tile.ore" + ((IMultiNamed) block).getNames()[stack.getItemDamage()];
 		}
 		return super.getUnlocalizedName(stack);
 	}
