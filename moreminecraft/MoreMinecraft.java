@@ -309,7 +309,7 @@ public class MoreMinecraft {
 
 	@EventHandler
 	public void Initialization(FMLInitializationEvent event) {
-		proxy.registerRenders();
+		proxy.register();
 	}
 
 	@EventHandler

@@ -10,7 +10,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
 	@Override
-	public void registerRenders() {
+	public void register() {
 		RenderingRegistry.registerEntityRenderingHandler(EntityPoisonPotatoLaunched.class, new RenderSnowball(Item.poisonousPotato));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBakedPotatoLaunched.class, new RenderSnowball(Item.bakedPotato));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPotatoLaunched.class, new RenderSnowball(Item.potato));
