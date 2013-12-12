@@ -32,7 +32,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(modid = MoreMinecraft.modID, name = "More Minecraft!", version = "alpha")
+@Mod(modid = MoreMinecraft.modID, name = "More Minecraft!", version = "0.1")
 @NetworkMod(clientSideRequired = true)
 public class MoreMinecraft {
 	@SidedProxy(clientSide = "moreminecraft.ClientProxy", serverSide = "moreminecraft.CommonProxy")
