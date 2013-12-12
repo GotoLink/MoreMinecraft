@@ -300,10 +300,11 @@ public class MoreMinecraft {
 	public static EnumToolMaterial toolBronze = EnumHelper.addToolMaterial("BRONZE", 2, 650, 6.5F, 2, 15);
 
 	public void entity() {
-		EntityRegistry.registerModEntity(EntityDiamondEnderpearl.class, "Diamond_EnderPearl", 0, this, 8, 1, true);
-		EntityRegistry.registerModEntity(EntityPotatoLaunched.class, "PotatoThrown", 1, this, 8, 1, true);
-		EntityRegistry.registerModEntity(EntityBakedPotatoLaunched.class, "PotatoThrownBaked", 2, this, 8, 1, true);
-		EntityRegistry.registerModEntity(EntityPoisonPotatoLaunched.class, "PotatoThrownPoison", 3, this, 8, 1, true);
+		EntityRegistry.registerModEntity(EntityDiamondEnderpearl.class, "Diamond_EnderPearl", 0, this, 64, 10, true);
+		EntityRegistry.registerModEntity(EntityPotatoLaunched.class, "PotatoThrown", 1, this, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityBakedPotatoLaunched.class, "PotatoThrownBaked", 2, this, 64, 20, true);
+		EntityRegistry.registerModEntity(EntityPoisonPotatoLaunched.class, "PotatoThrownPoison", 3, this, 64, 20, true);
+		//EntityRegistry.registerModEntity(EntityBear.class, "Bear", 4, this, 80, 3, true);
 	}
 
 	@EventHandler
@@ -323,11 +324,11 @@ public class MoreMinecraft {
 		GameRegistry.registerWorldGenerator(new WorldGeneratorMoreMinecraft());
 	}
 
-	private void createArmorSet(Configuration config, String field, EnumArmorMaterial par1Enum, String layer, String name, Object madeOf, int madeOfMeta) {
-		Item hpar1 = new ItemArmorMod(ConfigItem(config, name + " Helmet"), par1Enum, 0, layer).setUnlocalizedName("helmet" + layer).setTextureName(modID + ":armors/helmet" + layer);
-		Item cpar1 = new ItemArmorMod(ConfigItem(config, name + " Chestplate"), par1Enum, 1, layer).setUnlocalizedName("chestplate" + layer).setTextureName(modID + ":armors/chestplate" + layer);
-		Item lpar1 = new ItemArmorMod(ConfigItem(config, name + " Leggings"), par1Enum, 2, layer).setUnlocalizedName("leggings" + layer).setTextureName(modID + ":armors/leggings" + layer);
-		Item bpar1 = new ItemArmorMod(ConfigItem(config, name + " Boots"), par1Enum, 3, layer).setUnlocalizedName("boots" + layer).setTextureName(modID + ":armors/boots" + layer);
+	private void createArmorSet(Configuration config, String name, EnumArmorMaterial par1Enum, String layer, Object madeOf, int madeOfMeta) {
+		Item hpar1 = new ItemArmorMod(ConfigItem(config, name + " Helmet"), par1Enum, 0, layer).setUnlocalizedName("helmet" + name).setTextureName(modID + ":armors/helmet" + layer);
+		Item cpar1 = new ItemArmorMod(ConfigItem(config, name + " Chestplate"), par1Enum, 1, layer).setUnlocalizedName("chestplate" + name).setTextureName(modID + ":armors/chestplate" + layer);
+		Item lpar1 = new ItemArmorMod(ConfigItem(config, name + " Leggings"), par1Enum, 2, layer).setUnlocalizedName("leggings" + name).setTextureName(modID + ":armors/leggings" + layer);
+		Item bpar1 = new ItemArmorMod(ConfigItem(config, name + " Boots"), par1Enum, 3, layer).setUnlocalizedName("boots" + name).setTextureName(modID + ":armors/boots" + layer);
 		int made = -1;
 		if (madeOf instanceof Block) {
 			made = ((Block) madeOf).blockID;
@@ -341,10 +342,10 @@ public class MoreMinecraft {
 			GameRegistry.addRecipe(new ItemStack(bpar1), "X X", "X X", 'X', new ItemStack(made, 1, madeOfMeta));
 		}
 		try {
-			this.getClass().getField("helmet" + field).set(this, hpar1);
-			this.getClass().getField("plate" + field).set(this, cpar1);
-			this.getClass().getField("legs" + field).set(this, lpar1);
-			this.getClass().getField("boots" + field).set(this, bpar1);
+			this.getClass().getField("helmet" + name).set(this, hpar1);
+			this.getClass().getField("plate" + name).set(this, cpar1);
+			this.getClass().getField("legs" + name).set(this, lpar1);
+			this.getClass().getField("boots" + name).set(this, bpar1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -412,24 +413,24 @@ public class MoreMinecraft {
 	}
 
 	private void sets(Configuration config) {
-		createArmorSet(config, "Emerald", armorEmerald, "emerald", "Emerald", Item.emerald, 0);
-		createArmorSet(config, "Obsidian", armorObsidian, "obsidian", "Obsidian", materials, 2);
-		createArmorSet(config, "Ruby", armorCrystal, "ruby", "Ruby", materials, 20);
-		createArmorSet(config, "YellowSaph", armorCrystal, "saphY", "Yellow Sapphire", materials, 23);
-		createArmorSet(config, "GreenSaph", armorCrystal, "saphG", "Green Sapphire", materials, 22);
-		createArmorSet(config, "BlueSaph", armorCrystal, "saphB", "Blue Sapphire", materials, 21);
-		createArmorSet(config, "Stone", armorStone, "stone", "Stone", Block.stone, 0);
-		createArmorSet(config, "Wood", armorWood, "wood", "Wooden", Block.planks, 0);
-		createArmorSet(config, "WoodJungle", armorWood, "wood_jungle", "Wooden", Block.planks, 3);
-		createArmorSet(config, "WoodSpruce", armorWood, "wood_spruce", "Wooden", Block.planks, 1);
-		createArmorSet(config, "WoodBirch", armorWood, "wood_birch", "Wooden", Block.planks, 2);
-		createArmorSet(config, "Steel", armorSteel, "steel", "Steel", materials, 3);
-		createArmorSet(config, "Titanium", armorTitanium, "titanium", "Titanium", materials, 4);
-		createArmorSet(config, "End", armorEnd, "end", "Endium", materials, 24);
-		createArmorSet(config, "Quartz", armorQuartz, "quarts", "Quartz", materials, 14);
-		createArmorSet(config, "Copper", armorMetal, "copper", "Copper", materials, 17);
-		createArmorSet(config, "Tin", armorMetal, "tin", "Tin", materials, 18);
-		createArmorSet(config, "Bronze", armorBronze, "bronze", "Bronze", materials, 19);
+		createArmorSet(config, "Emerald", armorEmerald, "emerald", Item.emerald, 0);
+		createArmorSet(config, "Obsidian", armorObsidian, "obsidian", materials, 2);
+		createArmorSet(config, "Ruby", armorCrystal, "ruby", materials, 20);
+		createArmorSet(config, "YellowSaph", armorCrystal, "saphY", materials, 23);
+		createArmorSet(config, "GreenSaph", armorCrystal, "saphG", materials, 22);
+		createArmorSet(config, "BlueSaph", armorCrystal, "saphB", materials, 21);
+		createArmorSet(config, "Stone", armorStone, "stone", Block.stone, 0);
+		createArmorSet(config, "Wood", armorWood, "wood", Block.planks, 0);
+		createArmorSet(config, "WoodJungle", armorWood, "wood_jungle", Block.planks, 3);
+		createArmorSet(config, "WoodSpruce", armorWood, "wood_spruce", Block.planks, 1);
+		createArmorSet(config, "WoodBirch", armorWood, "wood_birch", Block.planks, 2);
+		createArmorSet(config, "Steel", armorSteel, "steel", materials, 3);
+		createArmorSet(config, "Titanium", armorTitanium, "titanium", materials, 4);
+		createArmorSet(config, "End", armorEnd, "end", materials, 24);
+		createArmorSet(config, "Quartz", armorQuartz, "quarts", materials, 14);
+		createArmorSet(config, "Copper", armorMetal, "copper", materials, 17);
+		createArmorSet(config, "Tin", armorMetal, "tin", materials, 18);
+		createArmorSet(config, "Bronze", armorBronze, "bronze", materials, 19);
 		createToolSet(config, "Emerald", toolEmerald, "Emerald", "Emerald", Item.emerald, 0);
 		createToolSet(config, "Obsidian", toolObsidian, "Obsidian", "Obsidian", materials, 2);
 		createToolSet(config, "Ruby", toolCrystal, "RSaph", "Ruby", materials, 20);
@@ -447,17 +448,13 @@ public class MoreMinecraft {
 
 	public static int ConfigBlock(Configuration config, String name) {
 		int id = config.getBlock(name, blockBaseID).getInt();
-		if (id == blockBaseID) {
-			blockBaseID += 1;
-		}
+		blockBaseID += 1;
 		return id;
 	}
 
 	public static int ConfigItem(Configuration config, String name) {
 		int id = config.getItem(name, itemBaseID).getInt();
-		if (id == itemBaseID) {
-			itemBaseID += 1;
-		}
+		itemBaseID += 1;
 		return id;
 	}
 
@@ -514,38 +511,33 @@ public class MoreMinecraft {
 		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 13, new ItemStack(materials, 2, 18), 3F);
 		FurnaceRecipes.smelting().addSmelting(oreDimensional.blockID, 14, new ItemStack(materials, 4, 18), 6F);
 		//PAXLES
-		GameRegistry.addRecipe(new ItemStack(MultitoolWood), "ABC", " # ", " # ", '#', new ItemStack(Item.stick), 'A', new ItemStack(Item.axeWood), 'B', new ItemStack(Item.shovelWood), 'C',
-				new ItemStack(Item.pickaxeWood));
-		GameRegistry.addRecipe(new ItemStack(MultitoolStone), "ABC", " # ", " # ", '#', new ItemStack(Item.stick), 'A', new ItemStack(Item.axeStone), 'B', new ItemStack(Item.shovelStone), 'C',
-				new ItemStack(Item.pickaxeStone));
-		GameRegistry.addRecipe(new ItemStack(MultitoolIron), "ABC", " # ", " # ", '#', new ItemStack(Item.stick), 'A', new ItemStack(Item.axeIron), 'B', new ItemStack(Item.shovelIron), 'C',
-				new ItemStack(Item.pickaxeIron));
-		GameRegistry.addRecipe(new ItemStack(MultitoolGold), "ABC", " # ", " # ", '#', new ItemStack(Item.stick), 'A', new ItemStack(Item.axeGold), 'B', new ItemStack(Item.shovelGold), 'C',
-				new ItemStack(Item.pickaxeGold));
-		GameRegistry.addRecipe(new ItemStack(MultitoolDiamond), "ABC", " # ", " # ", '#', new ItemStack(Item.stick), 'A', new ItemStack(Item.axeDiamond), 'B', new ItemStack(Item.shovelDiamond), 'C',
-				new ItemStack(Item.pickaxeDiamond));
+		GameRegistry.addRecipe(new ItemStack(MultitoolWood), "ABC", " # ", " # ", '#', Item.stick, 'A', Item.axeWood, 'B', Item.shovelWood, 'C', Item.pickaxeWood);
+		GameRegistry.addRecipe(new ItemStack(MultitoolStone), "ABC", " # ", " # ", '#', Item.stick, 'A', Item.axeStone, 'B', Item.shovelStone, 'C', Item.pickaxeStone);
+		GameRegistry.addRecipe(new ItemStack(MultitoolIron), "ABC", " # ", " # ", '#', Item.stick, 'A', Item.axeIron, 'B', Item.shovelIron, 'C', Item.pickaxeIron);
+		GameRegistry.addRecipe(new ItemStack(MultitoolGold), "ABC", " # ", " # ", '#', Item.stick, 'A', Item.axeGold, 'B', Item.shovelGold, 'C', Item.pickaxeGold);
+		GameRegistry.addRecipe(new ItemStack(MultitoolDiamond), "ABC", " # ", " # ", '#', Item.stick, 'A', Item.axeDiamond, 'B', Item.shovelDiamond, 'C', Item.pickaxeDiamond);
 		//Goggles and fancy gadgets
-		GameRegistry.addShapelessRecipe(new ItemStack(materials, 9, 7), Item.diamond);
 		GameRegistry.addRecipe(new ItemStack(Item.diamond), "XXX", "XXX", "XXX", 'X', new ItemStack(materials, 1, 7));
 		GameRegistry.addRecipe(new ItemStack(foods, 1, 2), "XXX", "XCX", "XXX", 'X', new ItemStack(materials, 1, 7), 'C', Item.goldenCarrot);
+		GameRegistry.addShapelessRecipe(new ItemStack(materials, 9, 7), Item.diamond);
 		GameRegistry.addRecipe(new ItemStack(materials, 1, 8), " X ", "XCX", " X ", 'X', Item.ingotIron, 'C', Block.glass);
 		GameRegistry.addRecipe(new ItemStack(materials, 1, 9), "CXC", "XVX", "CXC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', new ItemStack(foods, 1, 2));
-		GameRegistry.addRecipe(new ItemStack(helmetGogglesVision, 1), "XCX", 'X', new ItemStack(materials, 1, 8), 'C', new ItemStack(materials, 1, 9));
 		GameRegistry.addRecipe(new ItemStack(materials, 1, 11), "CXC", "XVX", "CXC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', Item.appleGold);
-		GameRegistry.addRecipe(new ItemStack(plateDualHearts, 1), "C C", " X ", "C C", 'X', new ItemStack(materials, 1, 11), 'C', new ItemStack(materials, 1, 6));
 		GameRegistry.addRecipe(new ItemStack(materials, 1, 12), "CXC", "XVX", "CXC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', diamondEnderpearl);
-		GameRegistry.addRecipe(new ItemStack(diamondEnderpearl), "XXX", "XCX", "XXX", 'X', new ItemStack(materials, 1, 7), 'C', Item.enderPearl);
-		GameRegistry.addRecipe(new ItemStack(enderStaff), " A ", " B ", " C ", 'A', diamondEnderpearl, 'B', new ItemStack(materials, 1, 12), 'C', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(materials, 1, 13), "CXC", "XVX", "CXC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', Block.pistonBase);
-		GameRegistry.addRecipe(new ItemStack(unattunedLauncher, 1), "CCC", "BXV", "CCC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', new ItemStack(materials, 1, 13), 'B', Block.stoneButton);
-		GameRegistry.addRecipe(new ItemStack(unattunedLauncher, 1), "CCC", "VXB", "CCC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', new ItemStack(materials, 1, 13), 'B', Block.stoneButton);
 		GameRegistry.addRecipe(new ItemStack(materials, 1, 14), " C ", "CXC", " C ", 'X', Item.ingotIron, 'C', Item.netherQuartz);
 		GameRegistry.addRecipe(new ItemStack(materials, 1, 15), "CXC", "XVX", "CXC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', Block.blockRedstone);
+		GameRegistry.addRecipe(new ItemStack(materials, 1, 16), "VV ", "AAV", "VV ", 'V', Item.ingotIron, 'A', Item.redstone);
+		GameRegistry.addRecipe(new ItemStack(materials, 1, 16), " VV", "VAA", " VV", 'V', Item.ingotIron, 'A', Item.redstone);
+		GameRegistry.addRecipe(new ItemStack(helmetGogglesVision), "XCX", 'X', new ItemStack(materials, 1, 8), 'C', new ItemStack(materials, 1, 9));
+		GameRegistry.addRecipe(new ItemStack(plateDualHearts), "C C", " X ", "C C", 'X', new ItemStack(materials, 1, 11), 'C', new ItemStack(materials, 1, 6));
+		GameRegistry.addRecipe(new ItemStack(diamondEnderpearl), "XXX", "XCX", "XXX", 'X', new ItemStack(materials, 1, 7), 'C', Item.enderPearl);
+		GameRegistry.addRecipe(new ItemStack(enderStaff), " A ", " B ", " C ", 'A', diamondEnderpearl, 'B', new ItemStack(materials, 1, 12), 'C', Item.stick);
+		GameRegistry.addRecipe(new ItemStack(unattunedLauncher), "CCC", "BXV", "CCC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', new ItemStack(materials, 1, 13), 'B', Block.stoneButton);
+		GameRegistry.addRecipe(new ItemStack(unattunedLauncher), "CCC", "VXB", "CCC", 'X', Item.redstone, 'C', Item.ingotIron, 'V', new ItemStack(materials, 1, 13), 'B', Block.stoneButton);
 		GameRegistry.addRecipe(new ItemStack(scubaHelmet), "CXC", "CVC", 'X', new ItemStack(materials, 1, 15), 'C', Item.ingotIron, 'V', Block.glass);
 		GameRegistry.addRecipe(new ItemStack(jumpBoots), "V V", "C C", 'C', new ItemStack(materials, 1, 13), 'V', Block.cobblestone);
 		GameRegistry.addRecipe(new ItemStack(legsSwiftness), "VAV", "C C", "V V", 'A', new ItemStack(materials, 1, 11), 'V', Item.ingotIron, 'C', new ItemStack(materials, 1, 16));
-		GameRegistry.addRecipe(new ItemStack(materials, 1, 16), "VV ", "AAV", "VV ", 'V', Item.ingotIron, 'A', Item.redstone);
-		GameRegistry.addRecipe(new ItemStack(materials, 1, 16), " VV", "VAA", " VV", 'V', Item.ingotIron, 'A', Item.redstone);
 		GameRegistry.addShapelessRecipe(new ItemStack(potatoLauncher), Item.potato, unattunedLauncher);
 		GameRegistry.addShapelessRecipe(new ItemStack(potatoLauncher), Item.bakedPotato, unattunedLauncher);
 		GameRegistry.addShapelessRecipe(new ItemStack(potatoLauncher), Item.poisonousPotato, unattunedLauncher);
@@ -587,11 +579,11 @@ public class MoreMinecraft {
 		arrowLauncher = new ArrowLauncher(ConfigItem(config, "Arrow Launcher")).setCreativeTab(tabMisc).setUnlocalizedName("ArrowLauncher").setFull3D().setTextureName(modID + ":ArrowLauncher");
 		legsSwiftness = new ItemArmorRedstoneMod(ConfigItem(config, "Leggings of Swiftness"), armorInfinite, 2, "swiftness").setUnlocalizedName("legsSwiftness").setTextureName(
 				modID + ":legsSwiftness");
-		MultitoolWood = new ItemMultitoolMod(ConfigItem(config, "Wood Multitool"), EnumToolMaterial.WOOD).setUnlocalizedName("WPaxle").setTextureName(modID + ":tools/paxleWood");
-		MultitoolStone = new ItemMultitoolMod(ConfigItem(config, "Stone Multitool"), EnumToolMaterial.STONE).setUnlocalizedName("SPaxle").setTextureName(modID + ":tools/paxleStone");
-		MultitoolIron = new ItemMultitoolMod(ConfigItem(config, "Iron Multitool"), EnumToolMaterial.IRON).setUnlocalizedName("IPaxle").setTextureName(modID + ":tools/paxleIron");
-		MultitoolGold = new ItemMultitoolMod(ConfigItem(config, "Gold Multitool"), EnumToolMaterial.GOLD).setUnlocalizedName("GPaxle").setTextureName(modID + ":tools/paxleGold");
-		MultitoolDiamond = new ItemMultitoolMod(ConfigItem(config, "Diamond Multitool"), EnumToolMaterial.EMERALD).setUnlocalizedName("DPaxle").setTextureName(modID + ":tools/paxleDiamond");
+		MultitoolWood = new ItemMultitoolMod(ConfigItem(config, "Wood Multitool"), EnumToolMaterial.WOOD).setUnlocalizedName("paxleWood").setTextureName(modID + ":tools/paxleWood");
+		MultitoolStone = new ItemMultitoolMod(ConfigItem(config, "Stone Multitool"), EnumToolMaterial.STONE).setUnlocalizedName("paxleStone").setTextureName(modID + ":tools/paxleStone");
+		MultitoolIron = new ItemMultitoolMod(ConfigItem(config, "Iron Multitool"), EnumToolMaterial.IRON).setUnlocalizedName("paxleIron").setTextureName(modID + ":tools/paxleIron");
+		MultitoolGold = new ItemMultitoolMod(ConfigItem(config, "Gold Multitool"), EnumToolMaterial.GOLD).setUnlocalizedName("paxleGold").setTextureName(modID + ":tools/paxleGold");
+		MultitoolDiamond = new ItemMultitoolMod(ConfigItem(config, "Diamond Multitool"), EnumToolMaterial.EMERALD).setUnlocalizedName("paxleDiamond").setTextureName(modID + ":tools/paxleDiamond");
 		battleaxeWood = new ItemBattleAxeMod(ConfigItem(config, "Wood Battleaxe"), EnumToolMaterial.WOOD).setUnlocalizedName("battleaxeWood").setTextureName(modID + ":tools/battleaxeWood");
 		battleaxeStone = new ItemBattleAxeMod(ConfigItem(config, "Stone Battleaxe"), EnumToolMaterial.STONE).setUnlocalizedName("battleaxeStone").setTextureName(modID + ":tools/battleaxeStone");
 		battleaxeIron = new ItemBattleAxeMod(ConfigItem(config, "Iron Battleaxe"), EnumToolMaterial.IRON).setUnlocalizedName("battleaxeIron").setTextureName(modID + ":tools/battleaxeIron");
