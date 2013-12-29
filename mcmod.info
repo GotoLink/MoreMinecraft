@@ -1,0 +1,17 @@
+[
+{
+  "modid": "moreminecraft",
+  "name": "More Minecraft!",
+  "description": "",
+  "version": "0.1",
+  "credits": "Made by SwordsMiner, Updated by GotoLink",
+  "logoFile": "",
+  "mcversion": "",
+  "url": "http://www.planetminecraft.com/mod/more-minecraft-armor-tools-food-blocks-everything/",
+  "updateUrl": "",
+  "authors": ["SwordsMiner","GotoLink"],
+  "parent":"",
+  "screenshots": [],
+  "dependencies": []
+}
+]
