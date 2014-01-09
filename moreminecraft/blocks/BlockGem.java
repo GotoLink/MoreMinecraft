@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import moreminecraft.MoreMinecraft;
 import moreminecraft.items.ItemBlockWithMetaNamed;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -27,13 +28,18 @@ public class BlockGem extends BasicBlock {
 
 	public BlockGem(int id) {
 		super(id);
-		Item.itemsList[id] = new ItemBlockWithMetaNamed(id - 256, this);
+        GameRegistry.registerBlock(this, ItemBlockWithMetaNamed.class, "Gems");
 	}
 
 	@Override
 	public int damageDropped(int meta) {
 		return meta < dropMeta.length ? dropMeta[meta] : 0;
 	}
+
+    @Override
+    public int getDamageValue(World par1World, int par2, int par3, int par4){
+        return par1World.getBlockMetadata(par2, par3, par4);
+    }
 
 	@Override
 	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {

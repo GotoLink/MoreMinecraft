@@ -3,6 +3,7 @@ package moreminecraft.blocks;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -20,7 +21,7 @@ public class BlockOreDimensional extends BasicBlock {
 	public BlockOreDimensional(int id, String... names) {
 		super(id);
 		this.names = names;
-		Item.itemsList[id] = new ItemBlockWithMetaNamed(id - 256, this);
+        GameRegistry.registerBlock(this, ItemBlockWithMetaNamed.class, "OreDimensional");
 	}
 
 	@Override

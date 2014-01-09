@@ -2,6 +2,7 @@ package moreminecraft.blocks;
 
 import java.util.List;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import moreminecraft.items.ItemBlockWithMetaNamed;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,7 +19,7 @@ public class BlockStorage extends BasicBlock {
 	public BlockStorage(int id, String... names) {
 		super(id);
 		this.names = names;
-		Item.itemsList[id] = new ItemBlockWithMetaNamed(id - 256, this);
+        GameRegistry.registerBlock(this, ItemBlockWithMetaNamed.class, "Storages");
 	}
 
 	@Override
