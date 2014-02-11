@@ -275,3 +275,5 @@ tile.blockCopper.name=Copper Block
 tile.blockTin.name=Tin Block
 tile.blockBronze.name=Bronze Block
 tile.irontrapdoor.name=Trapdoor
+
+launcher.no.potato=You dont have any Potatoes!

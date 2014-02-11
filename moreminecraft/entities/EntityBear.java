@@ -1,5 +1,6 @@
 package moreminecraft.entities;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -49,7 +50,7 @@ public class EntityBear extends EntityMob {
 	}
 
 	@Override
-	protected void playStepSound(int par1, int par2, int par3, int par4) {
+	protected void func_145780_a(int par1, int par2, int par3, Block par4) {
 		this.playSound("mob.cow.step", 0.15F, 1.0F);
 	}
 }

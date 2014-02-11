@@ -5,36 +5,37 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public class ItemSeedFoodMod extends ItemFood implements IPlantable {
 	/** Block ID of the crop this seed food should place. */
-	private int cropId;
+	private Block cropId;
 	/** Block ID of the soil this seed food should be planted on. */
-	private int soilId;
+	private Block soilId;
 
-	public ItemSeedFoodMod(int par1, int par2, float par3, int par4, int par5) {
-		super(par1, par2, par3, false);
+	public ItemSeedFoodMod(int par2, float par3, Block par4, Block par5) {
+		super(par2, par3, false);
 		this.cropId = par4;
 		this.soilId = par5;
 		setCreativeTab(MoreMinecraft.tabMisc);
 	}
 
 	@Override
-	public int getPlantID(World world, int x, int y, int z) {
+	public Block getPlant(IBlockAccess world, int x, int y, int z) {
 		return cropId;
 	}
 
 	@Override
-	public int getPlantMetadata(World world, int x, int y, int z) {
+	public int getPlantMetadata(IBlockAccess world, int x, int y, int z) {
 		return 0;
 	}
 
 	@Override
-	public EnumPlantType getPlantType(World world, int x, int y, int z) {
+	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z) {
 		return EnumPlantType.Crop;
 	}
 
@@ -43,10 +44,9 @@ public class ItemSeedFoodMod extends ItemFood implements IPlantable {
 		if (par7 != 1) {
 			return false;
 		} else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack)) {
-			int i1 = par3World.getBlockId(par4, par5, par6);
-			Block soil = Block.blocksList[i1];
-			if (soil != null && soil.canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6)) {
-				par3World.setBlock(par4, par5 + 1, par6, this.cropId);
+			Block soil = par3World.func_147439_a(par4, par5, par6);
+			if (soil != null && soil.canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.func_147437_c(par4, par5 + 1, par6)) {
+				par3World.func_147449_b(par4, par5 + 1, par6, this.cropId);
 				--par1ItemStack.stackSize;
 				return true;
 			} else {

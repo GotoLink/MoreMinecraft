@@ -37,7 +37,7 @@ public class EntityDiamondEnderpearl extends EntityThrowable {
 		if (!this.worldObj.isRemote) {
 			if (this.getThrower() != null && this.getThrower() instanceof EntityPlayerMP) {
 				EntityPlayerMP entityplayermp = (EntityPlayerMP) this.getThrower();
-				if (!entityplayermp.playerNetServerHandler.connectionClosed && entityplayermp.worldObj == this.worldObj) {
+				if (!entityplayermp.playerNetServerHandler.func_147362_b().func_150724_d() && entityplayermp.worldObj == this.worldObj) {
 					EnderTeleportEvent event = new EnderTeleportEvent(entityplayermp, this.posX, this.posY, this.posZ, 5.0F);
 					if (!MinecraftForge.EVENT_BUS.post(event)) {
 						if (this.getThrower().isRiding()) {

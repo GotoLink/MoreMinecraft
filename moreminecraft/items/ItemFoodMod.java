@@ -5,22 +5,23 @@ import java.util.List;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import moreminecraft.MoreMinecraft;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class ItemFoodMod extends ItemFood {
 	public final String[] names;
-	private Icon[] icons;
+	private IIcon[] icons;
 	private final int[] heal;
 	private final float[] saturation;
 
-	public ItemFoodMod(int par1, String[] names, int[] heal, float[] sat) {
-		super(par1, 0, 0, false);
+	public ItemFoodMod(String[] names, int[] heal, float[] sat) {
+		super(0, 0, false);
 		this.setHasSubtypes(true);
 		this.names = names;
 		this.heal = heal;
@@ -30,13 +31,13 @@ public class ItemFoodMod extends ItemFood {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int par1) {
+	public IIcon getIconFromDamage(int par1) {
 		return icons[par1];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void func_150895_a(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for (int index = 0; index < names.length; index++) {
 			par3List.add(new ItemStack(this, 1, index));
 		}
@@ -58,8 +59,8 @@ public class ItemFoodMod extends ItemFood {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
-		icons = new Icon[names.length];
+	public void registerIcons(IIconRegister par1IconRegister) {
+		icons = new IIcon[names.length];
 		for (int index = 0; index < names.length; index++) {
 			icons[index] = par1IconRegister.registerIcon(getIconString() + names[index]);
 		}

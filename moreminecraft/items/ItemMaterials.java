@@ -3,20 +3,20 @@ package moreminecraft.items;
 import java.util.List;
 
 import moreminecraft.MoreMinecraft;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemMaterials extends Item {
 	public String[] names;
-	private Icon[] icons;
+	private IIcon[] icons;
 
-	public ItemMaterials(int par1, String... names) {
-		super(par1);
+	public ItemMaterials(String... names) {
+		super();
 		setHasSubtypes(true);
 		this.names = names;
 		setCreativeTab(MoreMinecraft.tabMisc);
@@ -24,13 +24,13 @@ public class ItemMaterials extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int par1) {
+	public IIcon getIconFromDamage(int par1) {
 		return icons[par1];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void func_150895_a(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for (int index = 0; index < names.length; index++) {
 			par3List.add(new ItemStack(this, 1, index));
 		}
@@ -43,8 +43,8 @@ public class ItemMaterials extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
-		icons = new Icon[names.length];
+	public void registerIcons(IIconRegister par1IconRegister) {
+		icons = new IIcon[names.length];
 		for (int index = 0; index < names.length; index++) {
 			icons[index] = par1IconRegister.registerIcon(getIconString() + names[index]);
 		}

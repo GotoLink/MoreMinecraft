@@ -3,23 +3,22 @@ package moreminecraft.items;
 import moreminecraft.MoreMinecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemSword;
 import com.google.common.collect.Multimap;
 
 public class ItemKnifeMod extends ItemSword {
 	private float weaponDamage;
-	private final EnumToolMaterial toolMaterial;
+	private final ToolMaterial toolMaterial;
 
-	public ItemKnifeMod(int par1, EnumToolMaterial par2EnumToolMaterial) {
-		super(par1, par2EnumToolMaterial);
+	public ItemKnifeMod(ToolMaterial par2EnumToolMaterial) {
+		super(par2EnumToolMaterial);
 		this.toolMaterial = par2EnumToolMaterial;
 		this.weaponDamage = 2.0F + par2EnumToolMaterial.getDamageVsEntity() / 2;
 		this.setCreativeTab(MoreMinecraft.tabTools);
 	}
 
 	@Override
-	public float func_82803_g() {
+	public float func_150931_i() {
 		return (float) ((this.toolMaterial.getDamageVsEntity() / 2) - 1.5);
 	}
 

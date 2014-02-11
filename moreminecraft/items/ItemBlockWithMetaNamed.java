@@ -9,8 +9,8 @@ import net.minecraft.item.ItemStack;
 public class ItemBlockWithMetaNamed extends ItemBlockWithMetadata {
 	private Block block;
 
-	public ItemBlockWithMetaNamed(int par1, Block block) {
-		super(par1, block);
+	public ItemBlockWithMetaNamed(Block block) {
+		super(block, block);
 		this.block = block;
 	}
 

@@ -6,8 +6,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class EnderStaff extends Item {
-	public EnderStaff(int par1) {
-		super(par1);
+	public EnderStaff() {
+		super();
 		this.maxStackSize = 1;
 		this.setMaxDamage(64);
 	}

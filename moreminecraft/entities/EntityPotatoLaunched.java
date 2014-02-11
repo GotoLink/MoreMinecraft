@@ -5,6 +5,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -42,7 +43,7 @@ public class EntityPotatoLaunched extends EntityThrowable {
 			this.setDead();
 		}
 		if (thePlayer != null && thePlayer.capabilities.isCreativeMode == false && !this.worldObj.isRemote) {
-			EntityItem entityitem = new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(Item.potato));
+			EntityItem entityitem = new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(Items.potato));
 			this.worldObj.spawnEntityInWorld(entityitem);
 		}
 	}

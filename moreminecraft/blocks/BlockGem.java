@@ -7,12 +7,13 @@ import java.util.Random;
 import cpw.mods.fml.common.registry.GameRegistry;
 import moreminecraft.MoreMinecraft;
 import moreminecraft.items.ItemBlockWithMetaNamed;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -22,34 +23,34 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockGem extends BasicBlock {
 	private static final int[] chances = { 2, 1, 4 };//dimensions:(-1/0/1),
 	private static final int[] dropMeta = { 20, 21, 22, 23, 4 };
-	protected static final int[] drops = { Item.dyePowder.itemID, Item.coal.itemID, Item.redstone.itemID, Item.diamond.itemID };
+	protected static final Item[] drops = { Items.dye, Items.coal, Items.redstone, Items.diamond};
 	private final String[] names = { "Ruby", "BSaph", "GSaph", "YSaph", "Lapis", "Coal", "Redstone", "Diamond" };
-	private Icon[] icons;
+	private IIcon[] icons;
 
-	public BlockGem(int id) {
-		super(id);
+	public BlockGem() {
+		super();
         GameRegistry.registerBlock(this, ItemBlockWithMetaNamed.class, "Gems");
 	}
 
 	@Override
-	public int damageDropped(int meta) {
+	public int func_149692_a(int meta) {
 		return meta < dropMeta.length ? dropMeta[meta] : 0;
 	}
 
     @Override
-    public int getDamageValue(World par1World, int par2, int par3, int par4){
+    public int func_149643_k(World par1World, int par2, int par3, int par4){
         return par1World.getBlockMetadata(par2, par3, par4);
     }
 
 	@Override
-	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		if (Math.abs(world.provider.dimensionId) < 2) {
 			int count = 1 + world.rand.nextInt(getChance(world.provider.dimensionId, metadata));
 			for (int i = 0; i < count; i++) {
-				int id = idDropped(metadata, world.rand, fortune);
-				if (id > 0) {
-					ret.add(new ItemStack(id, 1, damageDropped(metadata)));
+				Item id = func_149650_a(metadata, world.rand, fortune);
+				if (id != null) {
+					ret.add(new ItemStack(id, 1, func_149692_a(metadata)));
 				}
 			}
 		}
@@ -57,16 +58,16 @@ public class BlockGem extends BasicBlock {
 	}
 
 	@Override
-	public float getBlockHardness(World world, int x, int y, int z) {
+	public float func_149712_f(World world, int x, int y, int z) {
 		int meta = world.getBlockMetadata(x, y, z);
 		if (meta < 5) {
 			return 1F;
 		}
-		return super.getBlockHardness(world, x, y, z);
+		return super.func_149712_f(world, x, y, z);
 	}
 
 	@Override
-	public Icon getBlockTexture(IBlockAccess blockAccess, int par2, int par3, int par4, int par5) {
+	public IIcon func_149673_e(IBlockAccess blockAccess, int par2, int par3, int par4, int par5) {
 		int meta = blockAccess.getBlockMetadata(par2, par3, par4);
 		int dimensionID = 0;
 		BiomeGenBase biome = blockAccess.getBiomeGenForCoords(par2, par4);
@@ -89,7 +90,7 @@ public class BlockGem extends BasicBlock {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta) {
+	public IIcon func_149691_a(int side, int meta) {
 		return icons[meta * 3];
 	}
 
@@ -100,20 +101,20 @@ public class BlockGem extends BasicBlock {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void func_149666_a(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for (int i = 0; i < names.length; i++) {
 			par3List.add(new ItemStack(par1, 1, i));
 		}
 	}
 
 	@Override
-	public int idDropped(int i, Random rand, int j) {
-		return i < dropMeta.length - 1 ? MoreMinecraft.materials.itemID : drops[i - dropMeta.length + 1];
+	public Item func_149650_a(int i, Random rand, int j) {
+		return i < dropMeta.length - 1 ? MoreMinecraft.materials : drops[i - dropMeta.length + 1];
 	}
 
 	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
-		icons = new Icon[names.length * 3];
+	public void func_149651_a(IIconRegister par1IconRegister) {
+		icons = new IIcon[names.length * 3];
 		for (int i = 0; i < names.length; i++) {
 			if (i < 4) {
 				for (int j = 0; j < 3; j++) {
@@ -136,7 +137,7 @@ public class BlockGem extends BasicBlock {
 		return luck;
 	}
 
-	private Icon getTexture(int dimID, int meta) {
+	private IIcon getTexture(int dimID, int meta) {
 		switch (dimID) {
 		case -1:
 			return icons[meta * 3 + 1];

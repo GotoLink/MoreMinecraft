@@ -1,5 +1,6 @@
 package moreminecraft.items;
 
+import com.google.common.collect.Sets;
 import moreminecraft.MoreMinecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -7,28 +8,30 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.world.World;
 
 import com.google.common.collect.Multimap;
 
+import java.util.Set;
+
 public class ItemBattleAxeMod extends ItemTool {
-	public static final Block[] blocksEffectiveAgainst = new Block[] { Block.planks, Block.bookShelf, Block.wood, Block.chest, Block.stoneDoubleSlab, Block.stoneSingleSlab, Block.pumpkin,
-			Block.pumpkinLantern };
+	public static final Set<Block> blocksEffectiveAgainst = Sets.newHashSet(Blocks.planks, Blocks.bookshelf, Blocks.log, Blocks.chest, Blocks.double_stone_slab, Blocks.stone_slab, Blocks.pumpkin,
+            Blocks.lit_pumpkin);
 	private float weaponDamage;
 
-	public ItemBattleAxeMod(int par1, EnumToolMaterial par2EnumToolMaterial) {
-		super(par1, 3.0F, par2EnumToolMaterial, blocksEffectiveAgainst);
+	public ItemBattleAxeMod(ToolMaterial par2EnumToolMaterial) {
+		super(3.0F, par2EnumToolMaterial, blocksEffectiveAgainst);
 		this.setCreativeTab(MoreMinecraft.tabTools);
 		this.weaponDamage = 6.0F + par2EnumToolMaterial.getDamageVsEntity();
 	}
 
 	@Override
-	public boolean canHarvestBlock(Block par1Block) {
-		return par1Block.blockID == Block.web.blockID || par1Block.blockMaterial == Material.wood || par1Block.blockMaterial == Material.plants || par1Block.blockMaterial == Material.vine;
+	public boolean func_150897_b(Block par1Block) {
+		return par1Block == Blocks.web || par1Block.func_149688_o() == Material.field_151575_d || par1Block.func_149688_o() == Material.field_151585_k || par1Block.func_149688_o() == Material.field_151582_l;
 	}
 
 	@Override
@@ -49,9 +52,9 @@ public class ItemBattleAxeMod extends ItemTool {
 	}
 
 	@Override
-	public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-		return par2Block != null && (par2Block.blockMaterial == Material.wood || par2Block.blockMaterial == Material.plants || par2Block.blockMaterial == Material.vine) ? this.efficiencyOnProperMaterial
-				: super.getStrVsBlock(par1ItemStack, par2Block);
+	public float func_150893_a(ItemStack par1ItemStack, Block par2Block) {
+		return par2Block != null && (par2Block.func_149688_o() == Material.field_151575_d || par2Block.func_149688_o() == Material.field_151585_k || par2Block.func_149688_o() == Material.field_151582_l) ? this.efficiencyOnProperMaterial
+				: super.func_150893_a(par1ItemStack, par2Block);
 	}
 
 	@Override
@@ -61,8 +64,8 @@ public class ItemBattleAxeMod extends ItemTool {
 	}
 
 	@Override
-	public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLivingBase par7EntityLivingBase) {
-		if (Block.blocksList[par3].getBlockHardness(par2World, par4, par5, par6) != 0.0D) {
+	public boolean func_150894_a(ItemStack par1ItemStack, World par2World, Block par3, int par4, int par5, int par6, EntityLivingBase par7EntityLivingBase) {
+		if (par3.func_149712_f(par2World, par4, par5, par6) != 0.0D) {
 			par1ItemStack.damageItem(2, par7EntityLivingBase);
 		}
 		return true;

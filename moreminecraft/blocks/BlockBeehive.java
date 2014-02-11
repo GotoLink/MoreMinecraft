@@ -5,23 +5,24 @@ import java.util.Random;
 import moreminecraft.MoreMinecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
 
 public class BlockBeehive extends Block {
-	public BlockBeehive(int id) {
-		super(id, Material.air);
-		this.setHardness(0.1F);
-		this.setResistance(0);
-		this.setStepSound(soundGrassFootstep);
-		this.setCreativeTab(MoreMinecraft.tabMisc);
+	public BlockBeehive() {
+		super(Material.field_151581_o);
+		this.func_149711_c(0.1F);
+		this.func_149752_b(0);
+		this.func_149672_a(field_149779_h);
+		this.func_149647_a(MoreMinecraft.tabMisc);
 	}
 
 	@Override
-	public int idDropped(int i, Random rand, int j) {
-		return MoreMinecraft.materials.itemID;
+	public Item func_149650_a(int i, Random rand, int j) {
+		return MoreMinecraft.materials;
 	}
 
 	@Override
-	public int quantityDropped(Random rand) {
+	public int func_149745_a(Random rand) {
 		return rand.nextInt(3) + 1;
 	}
 }

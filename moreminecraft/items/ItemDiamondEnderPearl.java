@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class ItemDiamondEnderPearl extends Item {
-	public ItemDiamondEnderPearl(int par1) {
-		super(par1);
+	public ItemDiamondEnderPearl() {
+		super();
 		this.maxStackSize = 16;
 	}
 

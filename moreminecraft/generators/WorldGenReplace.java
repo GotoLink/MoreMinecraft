@@ -2,20 +2,21 @@ package moreminecraft.generators;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenReplace extends WorldGenerator {
 	/** The block ID of the ore to be placed using this generator. */
-	private int minableBlockId;
+	private Block minableBlockId;
 	private int minableBlockMeta;
 	/** The number of blocks to generate. */
 	private int numberOfBlocks;
 	/** The block ID of the target block to be replace. */
-	private int toReplace;
+	private Block toReplace;
 
-	public WorldGenReplace(int par1, int par2, int par3, int par4) {
+	public WorldGenReplace(Block par1, int par2, int par3, Block par4) {
 		this.minableBlockId = par1;
 		this.minableBlockMeta = par2;
 		this.numberOfBlocks = par3;
@@ -52,8 +53,8 @@ public class WorldGenReplace extends WorldGenerator {
 						if (var39 * var39 + var42 * var42 < 1.0D) {
 							for (int var44 = var34; var44 <= var37; ++var44) {
 								double var45 = (var44 + 0.5D - var24) / (var28 / 2.0D);
-								if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D && par1World.getBlockId(var38, var41, var44) == toReplace) {
-									par1World.setBlock(var38, var41, var44, this.minableBlockId, this.minableBlockMeta, 2);
+								if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D && par1World.func_147439_a(var38, var41, var44) == toReplace) {
+									par1World.func_147465_d(var38, var41, var44, this.minableBlockId, this.minableBlockMeta, 2);
 								}
 							}
 						}
