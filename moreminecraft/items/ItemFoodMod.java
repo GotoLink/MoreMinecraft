@@ -37,7 +37,7 @@ public class ItemFoodMod extends ItemFood {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void func_150895_a(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for (int index = 0; index < names.length; index++) {
 			par3List.add(new ItemStack(this, 1, index));
 		}

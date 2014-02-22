@@ -45,7 +45,7 @@ public class EntityBakedPotatoLaunched extends EntityThrowable {
 		}
 		if (thePlayer != null && thePlayer.capabilities.isCreativeMode == false && !this.worldObj.isRemote) {
 			EntityItem entityitem = new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(Items.baked_potato));
-			entityitem.field_145804_b = 10;
+			entityitem.delayBeforeCanPickup = 10;
 			this.worldObj.spawnEntityInWorld(entityitem);
 		}
 	}

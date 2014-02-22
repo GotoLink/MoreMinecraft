@@ -20,7 +20,7 @@ public class BlockEdibleCrops extends BlockCrops {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon func_149691_a(int par1, int par2) {
+	public IIcon getIcon(int par1, int par2) {
 		if (par2 < 7) {
 			if (par2 == 6) {
 				par2 = 5;
@@ -33,10 +33,10 @@ public class BlockEdibleCrops extends BlockCrops {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void func_149651_a(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		this.iconArray = new IIcon[4];
 		for (int i = 0; i < this.iconArray.length; ++i) {
-			this.iconArray[i] = par1IconRegister.registerIcon(MoreMinecraft.modID + ":" + this.func_149641_N() + "_" + i);
+			this.iconArray[i] = par1IconRegister.registerIcon(MoreMinecraft.modID + ":" + this.getTextureName() + "_" + i);
 		}
 	}
 

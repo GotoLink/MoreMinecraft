@@ -33,7 +33,7 @@ public class MoreMinecraft {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem() {
-			return Item.func_150898_a(beeHive);
+			return Item.getItemFromBlock(beeHive);
 		}
 	};
 	public static CreativeTabs tabTools = new CreativeTabs("tabMoreMinecraftTools") {
@@ -318,7 +318,7 @@ public class MoreMinecraft {
 		Item bpar1 = new ItemArmorMod(par1Enum, 3, layer).setUnlocalizedName("boots" + name).setTextureName(modID + ":armors/boots" + layer);
 		Item made = null;
 		if (madeOf instanceof Block) {
-			made = Item.func_150898_a((Block) madeOf);
+			made = Item.getItemFromBlock((Block) madeOf);
 		} else if (madeOf instanceof Item) {
 			made = (Item) madeOf;
 		}
@@ -350,7 +350,7 @@ public class MoreMinecraft {
 		Item knife = new ItemKnifeMod(par1Enum).setUnlocalizedName("knife" + material).setTextureName(modID + ":tools/knife" + material);
 		Item made = null;
 		if (madeOf instanceof Block) {
-			made = Item.func_150898_a((Block) madeOf);
+			made = Item.getItemFromBlock((Block) madeOf);
 		} else if (madeOf instanceof Item) {
 			made = ((Item) madeOf);
 		}
@@ -393,7 +393,7 @@ public class MoreMinecraft {
             if (obj instanceof Item) {
                 GameRegistry.registerItem((Item) obj, ((Item) obj).getUnlocalizedName());
             }else if (obj instanceof Block && !(obj instanceof BasicBlock)) {
-                GameRegistry.registerBlock((Block) obj, ((Block) obj).func_149739_a());
+                GameRegistry.registerBlock((Block) obj, ((Block) obj).getUnlocalizedName());
             }
 		}
 	}
@@ -538,8 +538,8 @@ public class MoreMinecraft {
 				13F, 13F, 16.7F, 2F, 0.9F }).setUnlocalizedName("foods.").setTextureName(modID + ":");
 		helmetGogglesVision = new ItemArmorRedstoneMod(armorInfinite, 0, "goggles").setUnlocalizedName("gogglesVision").setTextureName(
 				modID + ":gogglesVision");
-		turnipCrop = new BlockEdibleCrops(true).func_149663_c("turnips").func_149658_d("turnips");
-		cornCrop = new BlockEdibleCrops(false).func_149663_c("corn").func_149658_d("corn");
+		turnipCrop = new BlockEdibleCrops(true).setBlockName("turnips").setBlockTextureName("turnips");
+		cornCrop = new BlockEdibleCrops(false).setBlockName("corn").setBlockTextureName("corn");
 		turnip = new ItemSeedFoodMod(2, 0.5F, turnipCrop, Blocks.farmland).setUnlocalizedName("turnip").setTextureName(modID + ":turnip");
 		corn = new ItemSeedFoodMod(4, 0.9F, cornCrop, Blocks.farmland).setUnlocalizedName("corn").setTextureName(modID + ":corn");
 		plateDualHearts = new ItemArmorRedstoneMod(armorInfinite, 1, "moreHealth").setUnlocalizedName("plateMoreHealth").setMaxDamage(72000)
@@ -570,15 +570,15 @@ public class MoreMinecraft {
 		knifeGold = new ItemKnifeMod(Item.ToolMaterial.GOLD).setUnlocalizedName("knifeGold").setTextureName(modID + ":tools/knifeGold");
 		knifeDiamond = new ItemKnifeMod(Item.ToolMaterial.EMERALD).setUnlocalizedName("knifeDiamond").setTextureName(modID + ":tools/knifeDiamond");
 		storage = new BlockStorage("RSaphBlock", "BSaphBlock", "GSaphBlock", "YSaphBlock", "blockSteel", "blockTitanium", "carbonatedIronBlock", "blockQuartz",
-				"blockCopper", "blockTin", "blockBronze").func_149658_d(modID + ":");
+				"blockCopper", "blockTin", "blockBronze").setBlockTextureName(modID + ":");
 		oreDimensional = new BlockOreDimensional("blockEnderium", "Endium", "IronNether", "IronEnd", "GoldNether", "GoldEnd", "Titanium", "TitaniumNether",
 				"TitaniumEnd", "Copper", "CopperNether", "CopperEnd", "Tin", "TinNether", "TinEnd");
-		beeHive = new BlockBeehive().func_149663_c("beeHive").func_149658_d(modID + ":beeHive");
+		beeHive = new BlockBeehive().setBlockName("beeHive").setBlockTextureName(modID + ":beeHive");
 		ores = new BlockGem();
-		chocolateCake = new BlockChocolateCake().func_149711_c(0.5F).func_149672_a(Block.field_149775_l).func_149663_c("choccake")
-				.func_149658_d(modID + ":choccake");
+		chocolateCake = new BlockChocolateCake().setHardness(0.5F).setStepSound(Block.soundTypeCloth).setBlockName("choccake")
+				.setBlockTextureName(modID + ":choccake");
 		itemChocolateCake = new ItemReed(chocolateCake).setCreativeTab(tabMisc).setUnlocalizedName("choccake").setTextureName(modID + ":choccake");
-		ironTrapDoor = new BlockIronTrapDoor().func_149663_c("irontrapdoor").func_149647_a(tabMisc).func_149658_d(modID + ":irontrapdoor");
+		ironTrapDoor = new BlockIronTrapDoor().setBlockName("irontrapdoor").setCreativeTab(tabMisc).setBlockTextureName(modID + ":irontrapdoor");
 		unattunedLauncher = new Item().setCreativeTab(tabMisc).setUnlocalizedName("UnattunedLauncher").setFull3D().setMaxStackSize(1)
 				.setTextureName(modID + ":UnattunedLauncher");
 	}

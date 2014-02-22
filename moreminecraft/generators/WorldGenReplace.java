@@ -53,8 +53,8 @@ public class WorldGenReplace extends WorldGenerator {
 						if (var39 * var39 + var42 * var42 < 1.0D) {
 							for (int var44 = var34; var44 <= var37; ++var44) {
 								double var45 = (var44 + 0.5D - var24) / (var28 / 2.0D);
-								if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D && par1World.func_147439_a(var38, var41, var44) == toReplace) {
-									par1World.func_147465_d(var38, var41, var44, this.minableBlockId, this.minableBlockMeta, 2);
+								if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D && par1World.getBlock(var38, var41, var44) == toReplace) {
+									par1World.setBlock(var38, var41, var44, this.minableBlockId, this.minableBlockMeta, 2);
 								}
 							}
 						}

@@ -33,12 +33,12 @@ public class BlockGem extends BasicBlock {
 	}
 
 	@Override
-	public int func_149692_a(int meta) {
+	public int damageDropped(int meta) {
 		return meta < dropMeta.length ? dropMeta[meta] : 0;
 	}
 
     @Override
-    public int func_149643_k(World par1World, int par2, int par3, int par4){
+    public int getDamageValue(World par1World, int par2, int par3, int par4){
         return par1World.getBlockMetadata(par2, par3, par4);
     }
 
@@ -48,9 +48,9 @@ public class BlockGem extends BasicBlock {
 		if (Math.abs(world.provider.dimensionId) < 2) {
 			int count = 1 + world.rand.nextInt(getChance(world.provider.dimensionId, metadata));
 			for (int i = 0; i < count; i++) {
-				Item id = func_149650_a(metadata, world.rand, fortune);
+				Item id = getItemDropped(metadata, world.rand, fortune);
 				if (id != null) {
-					ret.add(new ItemStack(id, 1, func_149692_a(metadata)));
+					ret.add(new ItemStack(id, 1, damageDropped(metadata)));
 				}
 			}
 		}
@@ -58,16 +58,16 @@ public class BlockGem extends BasicBlock {
 	}
 
 	@Override
-	public float func_149712_f(World world, int x, int y, int z) {
+	public float getBlockHardness(World world, int x, int y, int z) {
 		int meta = world.getBlockMetadata(x, y, z);
 		if (meta < 5) {
 			return 1F;
 		}
-		return super.func_149712_f(world, x, y, z);
+		return super.getBlockHardness(world, x, y, z);
 	}
 
 	@Override
-	public IIcon func_149673_e(IBlockAccess blockAccess, int par2, int par3, int par4, int par5) {
+	public IIcon getIcon(IBlockAccess blockAccess, int par2, int par3, int par4, int par5) {
 		int meta = blockAccess.getBlockMetadata(par2, par3, par4);
 		int dimensionID = 0;
 		BiomeGenBase biome = blockAccess.getBiomeGenForCoords(par2, par4);
@@ -90,7 +90,7 @@ public class BlockGem extends BasicBlock {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon func_149691_a(int side, int meta) {
+	public IIcon getIcon(int side, int meta) {
 		return icons[meta * 3];
 	}
 
@@ -101,19 +101,19 @@ public class BlockGem extends BasicBlock {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void func_149666_a(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for (int i = 0; i < names.length; i++) {
 			par3List.add(new ItemStack(par1, 1, i));
 		}
 	}
 
 	@Override
-	public Item func_149650_a(int i, Random rand, int j) {
+	public Item getItemDropped(int i, Random rand, int j) {
 		return i < dropMeta.length - 1 ? MoreMinecraft.materials : drops[i - dropMeta.length + 1];
 	}
 
 	@Override
-	public void func_149651_a(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		icons = new IIcon[names.length * 3];
 		for (int i = 0; i < names.length; i++) {
 			if (i < 4) {

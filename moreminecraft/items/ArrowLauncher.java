@@ -19,7 +19,7 @@ public class ArrowLauncher extends Item {
 		if (getDamage(par1ItemStack) > this.getMaxDamage()) {
 			par1ItemStack.stackSize--;
 		}
-		if (par3EntityPlayer.inventory.func_146028_b(Items.arrow) || par3EntityPlayer.capabilities.isCreativeMode) {
+		if (par3EntityPlayer.inventory.hasItem(Items.arrow) || par3EntityPlayer.capabilities.isCreativeMode) {
 			EntityArrow entityarrow = new EntityArrow(par2World, par3EntityPlayer, 1 * 2);
 			if (par3EntityPlayer.capabilities.isCreativeMode) {
 				entityarrow.canBePickedUp = 0;
@@ -27,7 +27,7 @@ public class ArrowLauncher extends Item {
 				entityarrow.canBePickedUp = 1;
 			par2World.spawnEntityInWorld(entityarrow);
 			if (!par3EntityPlayer.capabilities.isCreativeMode) {
-				par3EntityPlayer.inventory.func_146026_a(Items.arrow);
+				par3EntityPlayer.inventory.consumeInventoryItem(Items.arrow);
 				this.setDamage(par1ItemStack, getDamage(par1ItemStack) + 1);
 			}
 		}

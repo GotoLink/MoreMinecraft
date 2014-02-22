@@ -44,9 +44,9 @@ public class ItemSeedFoodMod extends ItemFood implements IPlantable {
 		if (par7 != 1) {
 			return false;
 		} else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack)) {
-			Block soil = par3World.func_147439_a(par4, par5, par6);
-			if (soil != null && soil.canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.func_147437_c(par4, par5 + 1, par6)) {
-				par3World.func_147449_b(par4, par5 + 1, par6, this.cropId);
+			Block soil = par3World.getBlock(par4, par5, par6);
+			if (soil != null && soil.canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6)) {
+				par3World.setBlock(par4, par5 + 1, par6, this.cropId);
 				--par1ItemStack.stackSize;
 				return true;
 			} else {

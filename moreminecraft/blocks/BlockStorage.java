@@ -23,13 +23,13 @@ public class BlockStorage extends BasicBlock {
 	}
 
 	@Override
-	public int func_149692_a(int meta) {
+	public int damageDropped(int meta) {
 		return meta;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon func_149691_a(int side, int meta) {
+	public IIcon getIcon(int side, int meta) {
 		return this.icon[meta];
 	}
 
@@ -40,7 +40,7 @@ public class BlockStorage extends BasicBlock {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void func_149666_a(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for (int i = 0; i < names.length; i++) {
 			par3List.add(new ItemStack(par1, 1, i));
 		}
@@ -48,10 +48,10 @@ public class BlockStorage extends BasicBlock {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void func_149651_a(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		this.icon = new IIcon[names.length];
 		for (int i = 0; i < names.length; i++) {
-			this.icon[i] = par1IconRegister.registerIcon(this.func_149641_N() + names[i]);
+			this.icon[i] = par1IconRegister.registerIcon(this.getTextureName() + names[i]);
 		}
 	}
 }

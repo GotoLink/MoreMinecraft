@@ -31,7 +31,7 @@ public class ItemBattleAxeMod extends ItemTool {
 
 	@Override
 	public boolean func_150897_b(Block par1Block) {
-		return par1Block == Blocks.web || par1Block.func_149688_o() == Material.field_151575_d || par1Block.func_149688_o() == Material.field_151585_k || par1Block.func_149688_o() == Material.field_151582_l;
+		return par1Block == Blocks.web || par1Block.getMaterial() == Material.wood || par1Block.getMaterial() == Material.plants || par1Block.getMaterial() == Material.vine;
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class ItemBattleAxeMod extends ItemTool {
 
 	@Override
 	public float func_150893_a(ItemStack par1ItemStack, Block par2Block) {
-		return par2Block != null && (par2Block.func_149688_o() == Material.field_151575_d || par2Block.func_149688_o() == Material.field_151585_k || par2Block.func_149688_o() == Material.field_151582_l) ? this.efficiencyOnProperMaterial
+		return par2Block != null && (par2Block.getMaterial() == Material.wood || par2Block.getMaterial() == Material.plants || par2Block.getMaterial() == Material.vine) ? this.efficiencyOnProperMaterial
 				: super.func_150893_a(par1ItemStack, par2Block);
 	}
 
@@ -64,8 +64,8 @@ public class ItemBattleAxeMod extends ItemTool {
 	}
 
 	@Override
-	public boolean func_150894_a(ItemStack par1ItemStack, World par2World, Block par3, int par4, int par5, int par6, EntityLivingBase par7EntityLivingBase) {
-		if (par3.func_149712_f(par2World, par4, par5, par6) != 0.0D) {
+	public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, Block par3, int par4, int par5, int par6, EntityLivingBase par7EntityLivingBase) {
+		if (par3.getBlockHardness(par2World, par4, par5, par6) != 0.0D) {
 			par1ItemStack.damageItem(2, par7EntityLivingBase);
 		}
 		return true;

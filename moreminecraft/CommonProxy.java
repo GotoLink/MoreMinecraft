@@ -12,7 +12,7 @@ public class CommonProxy {
 	@SubscribeEvent
 	public void onJump(LivingJumpEvent event) {
 		if (!event.entity.worldObj.isRemote && event.entityLiving instanceof EntityPlayer) {
-			ItemStack stack1 = event.entityLiving.getCurrentItemOrArmor(1);
+			ItemStack stack1 = event.entityLiving.getEquipmentInSlot(1);
 			if (stack1 != null && stack1.getItem() == MoreMinecraft.jumpBoots) {
 				event.entityLiving.addPotionEffect(new PotionEffect(Potion.jump.getId(), 1, 0));
 			}

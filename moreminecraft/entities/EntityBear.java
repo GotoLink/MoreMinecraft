@@ -31,7 +31,7 @@ public class EntityBear extends EntityMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20D);
 	}
 
 	@Override

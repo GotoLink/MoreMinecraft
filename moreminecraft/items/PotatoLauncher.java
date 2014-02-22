@@ -24,34 +24,34 @@ public class PotatoLauncher extends Item {
 		if (getDamage(par1ItemStack) > 256) {
 			par1ItemStack.stackSize--;
 		}
-		if (par3EntityPlayer.inventory.func_146028_b(Items.potato) && !par3EntityPlayer.capabilities.isCreativeMode) {
+		if (par3EntityPlayer.inventory.hasItem(Items.potato) && !par3EntityPlayer.capabilities.isCreativeMode) {
 			par2World.spawnEntityInWorld(new EntityPotatoLaunched(par2World, par3EntityPlayer, thrownDamage, par3EntityPlayer));
-			par3EntityPlayer.inventory.func_146026_a(Items.potato);
+			par3EntityPlayer.inventory.consumeInventoryItem(Items.potato);
 			this.setDamage(par1ItemStack, getDamage(par1ItemStack) + 1);
 			return par1ItemStack;
 		} else if (par3EntityPlayer.capabilities.isCreativeMode) {
 			par2World.spawnEntityInWorld(new EntityPotatoLaunched(par2World, par3EntityPlayer, thrownDamage, par3EntityPlayer));
 			return par1ItemStack;
 		}
-		if (par3EntityPlayer.inventory.func_146028_b(Items.baked_potato) && !par3EntityPlayer.capabilities.isCreativeMode) {
+		if (par3EntityPlayer.inventory.hasItem(Items.baked_potato) && !par3EntityPlayer.capabilities.isCreativeMode) {
 			par2World.spawnEntityInWorld(new EntityBakedPotatoLaunched(par2World, par3EntityPlayer, thrownDamage, par3EntityPlayer));
-			par3EntityPlayer.inventory.func_146026_a(Items.baked_potato);
+			par3EntityPlayer.inventory.consumeInventoryItem(Items.baked_potato);
 			this.setDamage(par1ItemStack, getDamage(par1ItemStack) + 1);
 			return par1ItemStack;
 		} else if (par3EntityPlayer.capabilities.isCreativeMode) {
 			par2World.spawnEntityInWorld(new EntityBakedPotatoLaunched(par2World, par3EntityPlayer, thrownDamage, par3EntityPlayer));
 			return par1ItemStack;
 		}
-		if (par3EntityPlayer.inventory.func_146028_b(Items.poisonous_potato) && !par3EntityPlayer.capabilities.isCreativeMode) {
+		if (par3EntityPlayer.inventory.hasItem(Items.poisonous_potato) && !par3EntityPlayer.capabilities.isCreativeMode) {
 			par2World.spawnEntityInWorld(new EntityPoisonPotatoLaunched(par2World, par3EntityPlayer, thrownDamage, par3EntityPlayer));
-			par3EntityPlayer.inventory.func_146026_a(Items.poisonous_potato);
+			par3EntityPlayer.inventory.consumeInventoryItem(Items.poisonous_potato);
 			this.setDamage(par1ItemStack, getDamage(par1ItemStack) + 1);
 			return par1ItemStack;
 		} else if (par3EntityPlayer.capabilities.isCreativeMode) {
 			par2World.spawnEntityInWorld(new EntityPoisonPotatoLaunched(par2World, par3EntityPlayer, thrownDamage, par3EntityPlayer));
 			return par1ItemStack;
 		}
-		par3EntityPlayer.func_146105_b(new ChatComponentTranslation("launcher.no.potato"));
+		par3EntityPlayer.addChatComponentMessage(new ChatComponentTranslation("launcher.no.potato"));
 		return par1ItemStack;
 	}
 }

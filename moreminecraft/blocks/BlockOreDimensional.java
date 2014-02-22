@@ -25,13 +25,13 @@ public class BlockOreDimensional extends BasicBlock {
 	}
 
 	@Override
-	public int func_149692_a(int i) {
+	public int damageDropped(int i) {
 		return i == 0 || i == 1 ? 24 : i;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IIcon func_149691_a(int side, int meta) {
+	public IIcon getIcon(int side, int meta) {
 		return icons[meta];
 	}
 
@@ -42,19 +42,19 @@ public class BlockOreDimensional extends BasicBlock {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void func_149666_a(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for (int i = 0; i < names.length; i++) {
 			par3List.add(new ItemStack(par1, 1, i));
 		}
 	}
 
 	@Override
-	public Item func_149650_a(int i, Random rand, int j) {
-		return i == 0 || i == 1 ? MoreMinecraft.materials : Item.func_150898_a(this);
+	public Item getItemDropped(int i, Random rand, int j) {
+		return i == 0 || i == 1 ? MoreMinecraft.materials : Item.getItemFromBlock(this);
 	}
 
 	@Override
-	public void func_149651_a(IIconRegister par1IconRegister) {
+	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		icons = new IIcon[names.length];
 		icons[0] = par1IconRegister.registerIcon(MoreMinecraft.modID + ":" + names[0]);
 		for (int i = 1; i < names.length; i++) {

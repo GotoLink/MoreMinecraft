@@ -15,22 +15,22 @@ public class ItemArmorRedstoneMod extends ItemArmorMod {
 	}
 
 	public void addPotionWhenEquiped(Item item, EntityPlayer player, int type, int potID, int potTick, int potStrong) {
-		ItemStack itemPar1 = player.getCurrentItemOrArmor(type);
+		ItemStack itemPar1 = player.getEquipmentInSlot(type);
 		if (itemPar1 != null && itemPar1.getItem() == item) {
 			player.addPotionEffect(new PotionEffect(potID, potTick, potStrong));
 		}
 	}
 
 	public void addPotionWhenSubmerged(Item item, EntityPlayer player, int type, int potID, int potTick, int potStrong) {
-		ItemStack itemPar1 = player.getCurrentItemOrArmor(type);
-		if (itemPar1 != null && itemPar1.getItem() == item && player.isInsideOfMaterial(Material.field_151586_h)) {
+		ItemStack itemPar1 = player.getEquipmentInSlot(type);
+		if (itemPar1 != null && itemPar1.getItem() == item && player.isInsideOfMaterial(Material.water)) {
 			player.addPotionEffect(new PotionEffect(potID, potTick, potStrong));
 		}
 	}
 
 	public void addPotionWhenWalk(Item item, EntityPlayer player, int type, int potID, int potTick, int potStrong) {
-		if (player.getCurrentItemOrArmor(type) != null) {
-			ItemStack itemPar1 = player.getCurrentItemOrArmor(type);
+		if (player.getEquipmentInSlot(type) != null) {
+			ItemStack itemPar1 = player.getEquipmentInSlot(type);
 			boolean Moving = player.moveForward != 0 || player.moveStrafing != 0;
 			if (itemPar1 != null && itemPar1.getItem() == item && Moving && player.onGround) {
 				player.addPotionEffect(new PotionEffect(potID, potTick, potStrong));
