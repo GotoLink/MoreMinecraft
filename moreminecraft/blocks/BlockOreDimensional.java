@@ -54,6 +54,7 @@ public class BlockOreDimensional extends BasicBlock {
 	}
 
 	@Override
+    @SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		icons = new IIcon[names.length];
 		icons[0] = par1IconRegister.registerIcon(MoreMinecraft.modID + ":" + names[0]);

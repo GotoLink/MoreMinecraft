@@ -67,6 +67,7 @@ public class BlockGem extends BasicBlock {
 	}
 
 	@Override
+    @SideOnly(Side.CLIENT)
 	public IIcon getIcon(IBlockAccess blockAccess, int par2, int par3, int par4, int par5) {
 		int meta = blockAccess.getBlockMetadata(par2, par3, par4);
 		int dimensionID = 0;
@@ -113,6 +114,7 @@ public class BlockGem extends BasicBlock {
 	}
 
 	@Override
+    @SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister) {
 		icons = new IIcon[names.length * 3];
 		for (int i = 0; i < names.length; i++) {
@@ -137,6 +139,7 @@ public class BlockGem extends BasicBlock {
 		return luck;
 	}
 
+    @SideOnly(Side.CLIENT)
 	private IIcon getTexture(int dimID, int meta) {
 		switch (dimID) {
 		case -1:
