@@ -9,7 +9,7 @@
   "mcversion": $mcversion,
   "url": "http://www.planetminecraft.com/mod/more-minecraft-armor-tools-food-blocks-everything/",
   "updateUrl": "",
-  "authors": ["SwordsMiner","GotoLink"],
+  "authorList": ["SwordsMiner","GotoLink"],
   "parent":"",
   "screenshots": [],
   "dependencies": []
