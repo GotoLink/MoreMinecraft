@@ -52,7 +52,7 @@ public class WorldGeneratorMoreMinecraft {
 			generateNether(event.world, event.rand, event.chunkX*16, event.chunkZ*16);
 			break;
 		case 0:
-			generateSurface(event.world, event.rand, event.chunkX*16, event.chunkZ);
+			generateSurface(event.world, event.rand, event.chunkX*16, event.chunkZ*16);
 			break;
 		case 1:
 			generateEnd(event.world, event.rand, event.chunkX*16, event.chunkZ*16);
