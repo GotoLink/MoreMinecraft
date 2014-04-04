@@ -2,6 +2,8 @@ package moreminecraft;
 
 import java.lang.reflect.Field;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.ModContainer;
 import moreminecraft.blocks.*;
 import moreminecraft.entities.*;
 import moreminecraft.generators.WorldGeneratorMoreMinecraft;
@@ -24,7 +26,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(modid = MoreMinecraft.modID, name = "More Minecraft!", version = "0.1")
+@Mod(modid = MoreMinecraft.modID, name = "More Minecraft!", useMetadata = true)
 public class MoreMinecraft {
 	@SidedProxy(clientSide = "moreminecraft.ClientProxy", serverSide = "moreminecraft.CommonProxy")
 	public static CommonProxy proxy;
@@ -309,6 +311,16 @@ public class MoreMinecraft {
 		crafting();
 		entity();
 		MinecraftForge.EVENT_BUS.register(new WorldGeneratorMoreMinecraft());
+        if(event.getSourceFile().getName().endsWith(".jar") && event.getSide().isClient()){
+            try {
+                Class.forName("mods.mud.ModUpdateDetector").getDeclaredMethod("registerMod", ModContainer.class, String.class, String.class).invoke(null,
+                        FMLCommonHandler.instance().findContainerFor(this),
+                        "https://raw.github.com/GotoLink/MoreMinecraft/master/update.xml",
+                        "https://raw.github.com/GotoLink/MoreMinecraft/master/changelog.md"
+                );
+            } catch (Throwable e) {
+            }
+        }
 	}
 
 	private void createArmorSet(String name, ItemArmor.ArmorMaterial par1Enum, String layer, Object madeOf, int madeOfMeta) {

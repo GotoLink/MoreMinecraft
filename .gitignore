@@ -6,4 +6,8 @@
 !pack.mcmeta
 !/assets
 !/moreminecraft
+!/gradle/
+!gradle*
+!update.xml
+!changelog.md
 
