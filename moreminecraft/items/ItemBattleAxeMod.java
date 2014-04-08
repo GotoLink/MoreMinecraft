@@ -53,8 +53,8 @@ public class ItemBattleAxeMod extends ItemTool {
 
 	@Override
 	public float func_150893_a(ItemStack par1ItemStack, Block par2Block) {
-		return par2Block != null && (par2Block.getMaterial() == Material.wood || par2Block.getMaterial() == Material.plants || par2Block.getMaterial() == Material.vine) ? this.efficiencyOnProperMaterial
-				: super.func_150893_a(par1ItemStack, par2Block);
+		return par2Block.getMaterial() != Material.wood && par2Block.getMaterial() != Material.plants && par2Block.getMaterial() != Material.vine ?
+        super.func_150893_a(par1ItemStack, par2Block):  this.efficiencyOnProperMaterial;
 	}
 
 	@Override

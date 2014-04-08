@@ -1,14 +1,14 @@
 <mod modid="moreminecraft">
     <mcVersion version="1.7.2">
         <release type="release" version="0.1"
-                 url="http://www.minecraftforum.net/topic/1651891-"
+                 url="http://www.minecraftforum.net/topic/1651891-/#MoreMinecraft"
                  download="http://www.mediafire.com/download/pt2dek9gcf9d05u/MoreMinecraft-0.1(1.7.2).jar"
                  md5="91338A18FDD9DC2590A85BCEDFA1056A"
                 />
     </mcVersion>
 	<mcVersion version="1.6.4">
         <release type="release" version="0.1"
-                 url="http://www.minecraftforum.net/topic/1651891-"
+                 url="http://www.minecraftforum.net/topic/1651891-/#MoreMinecraft"
                  download="http://www.mediafire.com/download/ew0f4ho6z2ozbxh/MoreMinecraft_0.1(1.6.X).zip"
                  md5="06E6D83E74911D3D83D7F7B6AF097B06"
                 />
