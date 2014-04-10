@@ -20,7 +20,7 @@ public class ArrowLauncher extends Item {
 			par1ItemStack.stackSize--;
 		}
 		if (par3EntityPlayer.inventory.hasItem(Items.arrow) || par3EntityPlayer.capabilities.isCreativeMode) {
-			EntityArrow entityarrow = new EntityArrow(par2World, par3EntityPlayer, 1 * 2);
+			EntityArrow entityarrow = new EntityArrow(par2World, par3EntityPlayer, 2);
 			if (par3EntityPlayer.capabilities.isCreativeMode) {
 				entityarrow.canBePickedUp = 0;
 			} else

@@ -6,7 +6,6 @@ import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -35,17 +34,13 @@ public class EntityPoisonPotatoLaunched extends EntityThrowable {
 	@Override
 	protected void onImpact(MovingObjectPosition par1MovingObjectPosition) {
 		if (par1MovingObjectPosition.entityHit != null) {
-			byte b0 = 0;
-			if (par1MovingObjectPosition.entityHit instanceof EntityBlaze) {
-				b0 = 3;
-			}
 			par1MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), damage);
 			((EntityLivingBase) par1MovingObjectPosition.entityHit).addPotionEffect((new PotionEffect(Potion.poison.getId(), 150, 2)));
 		}
 		if (!this.worldObj.isRemote) {
 			this.setDead();
 		}
-		if (thePlayer != null && thePlayer.capabilities.isCreativeMode == false && !this.worldObj.isRemote) {
+		if (thePlayer != null && !thePlayer.capabilities.isCreativeMode && !this.worldObj.isRemote) {
 			EntityItem entityitem = new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(Items.poisonous_potato));
 			this.worldObj.spawnEntityInWorld(entityitem);
 		}

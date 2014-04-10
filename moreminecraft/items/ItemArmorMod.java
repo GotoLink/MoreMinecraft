@@ -6,7 +6,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
 public class ItemArmorMod extends ItemArmor {
-	String armorFile;
+	final String armorFile;
 
 	public ItemArmorMod(ArmorMaterial par2EnumArmorMaterial, int par4, String armorFile) {
 		super(par2EnumArmorMaterial, 0, par4);

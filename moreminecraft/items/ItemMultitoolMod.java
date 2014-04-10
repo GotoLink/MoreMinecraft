@@ -15,21 +15,29 @@ public class ItemMultitoolMod extends ItemTool {
 	}
 
 	@Override
-	public boolean func_150897_b(Block par1Block) {
-		return par1Block == Blocks.obsidian ? this.toolMaterial.getHarvestLevel() == 3
-				: (par1Block != Blocks.diamond_block && par1Block != Blocks.diamond_ore ? (par1Block != Blocks.emerald_ore && par1Block != Blocks.emerald_block ? (par1Block != Blocks.gold_block
-						&& par1Block != Blocks.gold_ore ? (par1Block != Blocks.iron_block && par1Block != Blocks.iron_ore ? (par1Block != Blocks.lapis_block && par1Block != Blocks.lapis_ore ? (par1Block != Blocks.redstone_ore
-						&& par1Block != Blocks.lit_redstone_ore ? (par1Block.getMaterial() == Material.rock ? true : (par1Block.getMaterial() == Material.iron ? true
-						: par1Block.getMaterial() == Material.anvil)) : this.toolMaterial.getHarvestLevel() >= 2) : this.toolMaterial.getHarvestLevel() >= 1)
-						: this.toolMaterial.getHarvestLevel() >= 1)
-						: this.toolMaterial.getHarvestLevel() >= 2)
-						: this.toolMaterial.getHarvestLevel() >= 2)
-						: this.toolMaterial.getHarvestLevel() >= 2);
+	public boolean func_150897_b(Block block) {
+        if(block == Blocks.obsidian){
+            return this.toolMaterial.getHarvestLevel() >= 3;
+        }
+        else if(block == Blocks.diamond_block || block == Blocks.diamond_ore || block == Blocks.emerald_ore || block == Blocks.emerald_block || block == Blocks.gold_block || block == Blocks.gold_ore){
+            return this.toolMaterial.getHarvestLevel() >= 2;
+        }
+        else if(block == Blocks.iron_block || block == Blocks.iron_ore || block == Blocks.lapis_block || block == Blocks.lapis_ore){
+            return this.toolMaterial.getHarvestLevel() >= 1;
+        }
+        else if(block == Blocks.redstone_ore || block == Blocks.lit_redstone_ore){
+            return this.toolMaterial.getHarvestLevel() >= 2;
+        }
+        else
+            return isPickableMaterial(block.getMaterial());
 	}
 
 	@Override
 	public float func_150893_a(ItemStack par1ItemStack, Block par2Block) {
-		return par2Block != null && (par2Block.getMaterial() == Material.iron || par2Block.getMaterial() == Material.anvil || par2Block.getMaterial() == Material.rock) ? this.efficiencyOnProperMaterial
-				: super.func_150893_a(par1ItemStack, par2Block);
+		return isPickableMaterial(par2Block.getMaterial()) ? this.efficiencyOnProperMaterial : super.func_150893_a(par1ItemStack, par2Block);
 	}
+
+    public boolean isPickableMaterial(Material material){
+        return material == Material.rock || material == Material.iron || material == Material.anvil;
+    }
 }

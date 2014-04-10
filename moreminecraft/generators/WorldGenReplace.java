@@ -9,12 +9,12 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenReplace extends WorldGenerator {
 	/** The block ID of the ore to be placed using this generator. */
-	private Block minableBlockId;
-	private int minableBlockMeta;
+	private final Block minableBlockId;
+	private final int minableBlockMeta;
 	/** The number of blocks to generate. */
-	private int numberOfBlocks;
+	private final int numberOfBlocks;
 	/** The block ID of the target block to be replace. */
-	private Block toReplace;
+	private final Block toReplace;
 
 	public WorldGenReplace(Block par1, int par2, int par3, Block par4) {
 		this.minableBlockId = par1;

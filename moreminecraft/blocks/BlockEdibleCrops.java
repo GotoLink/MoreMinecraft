@@ -11,7 +11,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockEdibleCrops extends BlockCrops {
 	@SideOnly(Side.CLIENT)
 	private IIcon[] iconArray;
-	private boolean isTurnip;
+	private final boolean isTurnip;
 
 	public BlockEdibleCrops(boolean isTurnip) {
 		super();

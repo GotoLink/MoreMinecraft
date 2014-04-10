@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockStorage extends BasicBlock {
 	private IIcon[] icon;
-	private String[] names;
+	private final String[] names;
 
 	public BlockStorage(String... names) {
 		super();

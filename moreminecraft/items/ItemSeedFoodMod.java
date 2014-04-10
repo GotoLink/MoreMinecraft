@@ -13,9 +13,9 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class ItemSeedFoodMod extends ItemFood implements IPlantable {
 	/** Block ID of the crop this seed food should place. */
-	private Block cropId;
+	private final Block cropId;
 	/** Block ID of the soil this seed food should be planted on. */
-	private Block soilId;
+	private final Block soilId;
 
 	public ItemSeedFoodMod(int par2, float par3, Block par4, Block par5) {
 		super(par2, par3, false);
@@ -45,7 +45,7 @@ public class ItemSeedFoodMod extends ItemFood implements IPlantable {
 			return false;
 		} else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack)) {
 			Block soil = par3World.getBlock(par4, par5, par6);
-			if (soil != null && soil.canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6)) {
+			if (soil == soilId && soil.canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6)) {
 				par3World.setBlock(par4, par5 + 1, par6, this.cropId);
 				--par1ItemStack.stackSize;
 				return true;

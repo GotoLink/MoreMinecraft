@@ -6,7 +6,6 @@ import moreminecraft.entities.EntityPoisonPotatoLaunched;
 import moreminecraft.entities.EntityPotatoLaunched;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {

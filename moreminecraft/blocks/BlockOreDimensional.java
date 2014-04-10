@@ -15,7 +15,7 @@ import moreminecraft.MoreMinecraft;
 import moreminecraft.items.ItemBlockWithMetaNamed;
 
 public class BlockOreDimensional extends BasicBlock {
-	private String[] names;
+	private final String[] names;
 	private IIcon[] icons;
 
 	public BlockOreDimensional(String... names) {

@@ -12,7 +12,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemMaterials extends Item {
-	public String[] names;
+	public final String[] names;
 	private IIcon[] icons;
 
 	public ItemMaterials(String... names) {

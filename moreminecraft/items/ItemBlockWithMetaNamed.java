@@ -7,7 +7,7 @@ import net.minecraft.item.ItemBlockWithMetadata;
 import net.minecraft.item.ItemStack;
 
 public class ItemBlockWithMetaNamed extends ItemBlockWithMetadata {
-	private Block block;
+	private final Block block;
 
 	public ItemBlockWithMetaNamed(Block block) {
 		super(block, block);

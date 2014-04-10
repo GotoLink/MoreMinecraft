@@ -1,6 +1,5 @@
 package moreminecraft.entities;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -41,7 +40,7 @@ public class EntityDiamondEnderpearl extends EntityThrowable {
 					EnderTeleportEvent event = new EnderTeleportEvent(entityplayermp, this.posX, this.posY, this.posZ, 5.0F);
 					if (!MinecraftForge.EVENT_BUS.post(event)) {
 						if (this.getThrower().isRiding()) {
-							this.getThrower().mountEntity((Entity) null);
+							this.getThrower().mountEntity(null);
 						}
 						this.getThrower().setPositionAndUpdate(event.targetX, event.targetY, event.targetZ);
 						this.getThrower().fallDistance = 0.0F;
