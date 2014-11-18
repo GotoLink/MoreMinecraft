@@ -4,6 +4,8 @@ import java.lang.reflect.Field;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.ModContainer;
+import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
+import cpw.mods.fml.common.registry.GameData;
 import moreminecraft.blocks.*;
 import moreminecraft.entities.*;
 import moreminecraft.generators.WorldGeneratorMoreMinecraft;
@@ -28,9 +30,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @Mod(modid = MoreMinecraft.modID, name = "More Minecraft!", useMetadata = true)
 public class MoreMinecraft {
+    public static final String modID = "moreminecraft";
+    @Mod.Instance(modID)
+    public static MoreMinecraft INSTANCE;
 	@SidedProxy(clientSide = "moreminecraft.ClientProxy", serverSide = "moreminecraft.CommonProxy")
 	public static CommonProxy proxy;
-	public static final String modID = "moreminecraft";
+
 	public static CreativeTabs tabMisc = new CreativeTabs("tabMoreMinecraftMisc") {
 		@Override
 		@SideOnly(Side.CLIENT)
@@ -42,223 +47,48 @@ public class MoreMinecraft {
         @Override
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {
-            return MultitoolRuby;
+            return GameData.getItemRegistry().getObject(modID+":paxleRSaph");
         }
     };
+
 	public static Block ores;
 	public static Block storage;
 	public static Block oreDimensional;
 	public static Block beeHive;
 	public static Block turnipCrop;
 	public static Block cornCrop;
-	public static Block chocolateCake;
 	public static Block ironTrapDoor;
+
 	public static Item materials;
 	public static Item foods;
-	public static Item helmetEmerald;
-	public static Item plateEmerald;
-	public static Item legsEmerald;
-	public static Item bootsEmerald;
-	public static Item helmetObsidian;
-	public static Item plateObsidian;
-	public static Item legsObsidian;
-	public static Item bootsObsidian;
-	public static Item helmetStone;
-	public static Item plateStone;
-	public static Item legsStone;
-	public static Item bootsStone;
-	public static Item helmetWood;
-	public static Item plateWood;
-	public static Item legsWood;
-	public static Item bootsWood;
-	public static Item pickaxeEmerald;
-	public static Item axeEmerald;
-	public static Item hoeEmerald;
-	public static Item shovelEmerald;
-	public static Item swordEmerald;
-	public static Item pickaxeObsidian;
-	public static Item axeObsidian;
-	public static Item hoeObsidian;
-	public static Item shovelObsidian;
-	public static Item swordObsidian;
-	public static Item helmetRuby;
-	public static Item plateRuby;
-	public static Item legsRuby;
-	public static Item bootsRuby;
-	public static Item helmetYellowSaph;
-	public static Item plateYellowSaph;
-	public static Item legsYellowSaph;
-	public static Item bootsYellowSaph;
-	public static Item helmetBlueSaph;
-	public static Item plateBlueSaph;
-	public static Item legsBlueSaph;
-	public static Item bootsBlueSaph;
-	public static Item helmetGreenSaph;
-	public static Item plateGreenSaph;
-	public static Item legsGreenSaph;
-	public static Item bootsGreenSaph;
-	public static Item pickaxeRuby;
-	public static Item axeRuby;
-	public static Item hoeRuby;
-	public static Item shovelRuby;
-	public static Item swordRuby;
-	public static Item pickaxeYellowSaph;
-	public static Item axeYellowSaph;
-	public static Item hoeYellowSaph;
-	public static Item shovelYellowSaph;
-	public static Item swordYellowSaph;
-	public static Item pickaxeBlueSaph;
-	public static Item axeBlueSaph;
-	public static Item hoeBlueSaph;
-	public static Item shovelBlueSaph;
-	public static Item swordBlueSaph;
-	public static Item pickaxeGreenSaph;
-	public static Item axeGreenSaph;
-	public static Item hoeGreenSaph;
-	public static Item shovelGreenSaph;
-	public static Item swordGreenSaph;
-	public static Item MultitoolWood;
-	public static Item MultitoolStone;
-	public static Item MultitoolIron;
-	public static Item MultitoolGold;
-	public static Item MultitoolDiamond;
-	public static Item MultitoolEmerald;
-	public static Item MultitoolObsidian;
-	public static Item MultitoolRuby;
-	public static Item MultitoolGreenSaph;
-	public static Item MultitoolBlueSaph;
-	public static Item MultitoolYellowSaph;
-	public static Item MultitoolSteel;
-	public static Item MultitoolTitanium;
-	public static Item pickaxeSteel;
-	public static Item axeSteel;
-	public static Item hoeSteel;
-	public static Item shovelSteel;
-	public static Item swordSteel;
-	public static Item pickaxeTitanium;
-	public static Item axeTitanium;
-	public static Item hoeTitanium;
-	public static Item shovelTitanium;
-	public static Item swordTitanium;
-	public static Item helmetSteel;
-	public static Item plateSteel;
-	public static Item legsSteel;
-	public static Item bootsSteel;
-	public static Item helmetTitanium;
-	public static Item plateTitanium;
-	public static Item legsTitanium;
-	public static Item bootsTitanium;
+    public static Item itemChocolateCake;
 	public static Item helmetGogglesVision;
+    public static Item plateDualHearts;
+    public static Item scubaHelmet;
+    public static Item legsSwiftness;
+    public static Item jumpBoots;
 	public static Item turnip;
 	public static Item corn;
-	public static Item helmetEnd;
-	public static Item plateEnd;
-	public static Item legsEnd;
-	public static Item bootsEnd;
-	public static Item pickaxeEnd;
-	public static Item axeEnd;
-	public static Item shovelEnd;
-	public static Item hoeEnd;
-	public static Item swordEnd;
-	public static Item MultitoolEnd;
-	public static Item helmetWoodBirch;
-	public static Item plateWoodBirch;
-	public static Item legsWoodBirch;
-	public static Item bootsWoodBirch;
-	public static Item helmetWoodJungle;
-	public static Item plateWoodJungle;
-	public static Item legsWoodJungle;
-	public static Item bootsWoodJungle;
-	public static Item helmetWoodSpruce;
-	public static Item plateWoodSpruce;
-	public static Item legsWoodSpruce;
-	public static Item bootsWoodSpruce;
-	public static Item plateDualHearts;
 	public static Item enderStaff;
 	public static Item diamondEnderpearl;
-	public static Item pickaxeQuartz;
-	public static Item axeQuartz;
-	public static Item hoeQuartz;
-	public static Item shovelQuartz;
-	public static Item swordQuartz;
-	public static Item helmetQuartz;
-	public static Item plateQuartz;
-	public static Item legsQuartz;
-	public static Item bootsQuartz;
-	public static Item MultitoolQuartz;
 	public static Item potatoLauncher;
-	public static Item pickaxeCopper;
-	public static Item axeCopper;
-	public static Item hoeCopper;
-	public static Item shovelCopper;
-	public static Item swordCopper;
-	public static Item MultitoolCopper;
-	public static Item helmetCopper;
-	public static Item plateCopper;
-	public static Item legsCopper;
-	public static Item bootsCopper;
-	public static Item pickaxeTin;
-	public static Item axeTin;
-	public static Item hoeTin;
-	public static Item shovelTin;
-	public static Item swordTin;
-	public static Item MultitoolTin;
-	public static Item helmetTin;
-	public static Item plateTin;
-	public static Item legsTin;
-	public static Item bootsTin;
-	public static Item pickaxeBronze;
-	public static Item axeBronze;
-	public static Item hoeBronze;
-	public static Item shovelBronze;
-	public static Item swordBronze;
-	public static Item MultitoolBronze;
-	public static Item helmetBronze;
-	public static Item plateBronze;
-	public static Item legsBronze;
-	public static Item bootsBronze;
-	public static Item scubaHelmet;
-	public static Item jumpBoots;
 	public static Item unattunedLauncher;
 	public static Item arrowLauncher;
-	public static Item legsSwiftness;
-	public static Item itemChocolateCake;
+    public static Item MultitoolWood;
+    public static Item MultitoolStone;
+    public static Item MultitoolIron;
+    public static Item MultitoolGold;
+    public static Item MultitoolDiamond;
 	public static Item battleaxeWood;
 	public static Item battleaxeStone;
 	public static Item battleaxeIron;
 	public static Item battleaxeGold;
 	public static Item battleaxeDiamond;
-	public static Item battleaxeEmerald;
-	public static Item battleaxeObsidian;
-	public static Item battleaxeRuby;
-	public static Item battleaxeBlueSaph;
-	public static Item battleaxeGreenSaph;
-	public static Item battleaxeYellowSaph;
-	public static Item battleaxeSteel;
-	public static Item battleaxeTitanium;
-	public static Item battleaxeEnd;
-	public static Item battleaxeQuartz;
-	public static Item battleaxeCopper;
-	public static Item battleaxeTin;
-	public static Item battleaxeBronze;
 	public static Item knifeWood;
 	public static Item knifeStone;
 	public static Item knifeIron;
 	public static Item knifeGold;
 	public static Item knifeDiamond;
-	public static Item knifeEmerald;
-	public static Item knifeObsidian;
-	public static Item knifeRuby;
-	public static Item knifeBlueSaph;
-	public static Item knifeGreenSaph;
-	public static Item knifeYellowSaph;
-	public static Item knifeSteel;
-	public static Item knifeTitanium;
-	public static Item knifeEnd;
-	public static Item knifeQuartz;
-	public static Item knifeCopper;
-	public static Item knifeTin;
-	public static Item knifeBronze;
 	// CLOTH(5, new int[]{1, 3, 2, 1}, 15),
 	// CHAIN(15, new int[]{2, 5, 4, 1}, 12),
 	// IRON(15, new int[]{2, 6, 5, 2}, 9),
@@ -290,27 +120,15 @@ public class MoreMinecraft {
 	public static Item.ToolMaterial toolMetal = EnumHelper.addToolMaterial("METAL", 2, 225, 5.5F, 2, 14);
 	public static Item.ToolMaterial toolBronze = EnumHelper.addToolMaterial("BRONZE", 2, 650, 6.5F, 2, 15);
 
-	public void entity() {
-		EntityRegistry.registerModEntity(EntityDiamondEnderpearl.class, "Diamond_EnderPearl", 0, this, 64, 10, true);
-		EntityRegistry.registerModEntity(EntityPotatoLaunched.class, "PotatoThrown", 1, this, 64, 20, true);
-		EntityRegistry.registerModEntity(EntityBakedPotatoLaunched.class, "PotatoThrownBaked", 2, this, 64, 20, true);
-		EntityRegistry.registerModEntity(EntityPoisonPotatoLaunched.class, "PotatoThrownPoison", 3, this, 64, 20, true);
-		//EntityRegistry.registerModEntity(EntityBear.class, "Bear", 4, this, 80, 3, true);
-	}
-
 	@EventHandler
-	public void Initialization(FMLInitializationEvent event) {
-		proxy.register();
-	}
-
-	@EventHandler
-	public void PreInitialization(FMLPreInitializationEvent event) {
+	public void preInitialization(FMLPreInitializationEvent event) {
 		items();
+        register();
 		sets();
-		register();
 		crafting();
-		entity();
-		MinecraftForge.EVENT_BUS.register(new WorldGeneratorMoreMinecraft());
+        proxy.register();
+        MinecraftForge.EVENT_BUS.register(proxy);
+        MinecraftForge.EVENT_BUS.register(new WorldGeneratorMoreMinecraft());
         if(event.getSourceFile().getName().endsWith(".jar") && event.getSide().isClient()){
             try {
                 Class.forName("mods.mud.ModUpdateDetector").getDeclaredMethod("registerMod", ModContainer.class, String.class, String.class).invoke(null,
@@ -318,17 +136,37 @@ public class MoreMinecraft {
                         "https://raw.github.com/GotoLink/MoreMinecraft/master/update.xml",
                         "https://raw.github.com/GotoLink/MoreMinecraft/master/changelog.md"
                 );
-            } catch (Throwable e) {
+            } catch (Throwable ignored) {
             }
         }
 	}
+
+    @EventHandler
+    public void onRemap(FMLMissingMappingsEvent event){
+        for(FMLMissingMappingsEvent.MissingMapping missingMapping : event.get()){
+            switch(missingMapping.type) {
+                case ITEM:
+                    missingMapping.remap(GameData.getItemRegistry().getObject(missingMapping.name.replace("item.", "").replace("tile.", "")));
+                    break;
+                case BLOCK:
+                    missingMapping.remap(GameData.getBlockRegistry().getObject(missingMapping.name.replace("tile.", "")));
+                    break;
+            }
+        }
+    }
 
 	private void createArmorSet(String name, ItemArmor.ArmorMaterial par1Enum, String layer, Object madeOf, int madeOfMeta) {
 		Item hpar1 = new ItemArmorMod(par1Enum, 0, layer).setUnlocalizedName("helmet" + name).setTextureName(modID + ":armors/helmet" + layer);
 		Item cpar1 = new ItemArmorMod(par1Enum, 1, layer).setUnlocalizedName("chestplate" + name).setTextureName(modID + ":armors/chestplate" + layer);
 		Item lpar1 = new ItemArmorMod(par1Enum, 2, layer).setUnlocalizedName("leggings" + name).setTextureName(modID + ":armors/leggings" + layer);
 		Item bpar1 = new ItemArmorMod(par1Enum, 3, layer).setUnlocalizedName("boots" + name).setTextureName(modID + ":armors/boots" + layer);
-		Item made = null;
+
+        GameRegistry.registerItem(hpar1, "helmet" + name);
+        GameRegistry.registerItem(cpar1, "chestplate" + name);
+        GameRegistry.registerItem(lpar1, "leggings" + name);
+        GameRegistry.registerItem(bpar1, "boots" + name);
+
+        Item made = null;
 		if (madeOf instanceof Block) {
 			made = Item.getItemFromBlock((Block) madeOf);
 		} else if (madeOf instanceof Item) {
@@ -340,17 +178,9 @@ public class MoreMinecraft {
 			GameRegistry.addRecipe(new ItemStack(lpar1), "XXX", "X X", "X X", 'X', new ItemStack(made, 1, madeOfMeta));
 			GameRegistry.addRecipe(new ItemStack(bpar1), "X X", "X X", 'X', new ItemStack(made, 1, madeOfMeta));
 		}
-		try {
-			this.getClass().getField("helmet" + name).set(this, hpar1);
-			this.getClass().getField("plate" + name).set(this, cpar1);
-			this.getClass().getField("legs" + name).set(this, lpar1);
-			this.getClass().getField("boots" + name).set(this, bpar1);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
-	private void createToolSet(String field, Item.ToolMaterial par1Enum, String material, String name, Object madeOf, int madeOfMeta) {
+	private void createToolSet(Item.ToolMaterial par1Enum, String material, Object madeOf, int madeOfMeta) {
 		Item pick = new ItemPick(par1Enum).setUnlocalizedName("pickaxe" + material).setCreativeTab(tabTools)
 				.setTextureName(modID + ":tools/pickaxe" + material);
 		Item axe = new ItemHatchet(par1Enum).setUnlocalizedName("axe" + material).setCreativeTab(tabTools).setTextureName(modID + ":tools/axe" + material);
@@ -360,7 +190,17 @@ public class MoreMinecraft {
 		Item multitool = new ItemMultitoolMod(par1Enum).setUnlocalizedName("paxle" + material).setTextureName(modID + ":tools/paxle" + material);
 		Item BAxe = new ItemBattleAxeMod(par1Enum).setUnlocalizedName("battleaxe" + material).setTextureName(modID + ":tools/battleaxe" + material);
 		Item knife = new ItemKnifeMod(par1Enum).setUnlocalizedName("knife" + material).setTextureName(modID + ":tools/knife" + material);
-		Item made = null;
+
+        GameRegistry.registerItem(pick, "pickaxe" + material);
+        GameRegistry.registerItem(axe, "axe" + material);
+        GameRegistry.registerItem(shovel, "shovel" + material);
+        GameRegistry.registerItem(hoe, "hoe" + material);
+        GameRegistry.registerItem(sword, "sword" + material);
+        GameRegistry.registerItem(multitool, "paxle" + material);
+        GameRegistry.registerItem(BAxe, "battleaxe" + material);
+        GameRegistry.registerItem(knife, "knife" + material);
+
+        Item made = null;
 		if (madeOf instanceof Block) {
 			made = Item.getItemFromBlock((Block) madeOf);
 		} else if (madeOf instanceof Item) {
@@ -376,37 +216,22 @@ public class MoreMinecraft {
 			GameRegistry.addRecipe(new ItemStack(BAxe), "XXX", "XCX", " C ", 'X', new ItemStack(made, 1, madeOfMeta), 'C', Items.stick);
 			GameRegistry.addRecipe(new ItemStack(knife), " X ", " C ", 'X', new ItemStack(made, 1, madeOfMeta), 'C', Items.stick);
 		}
-		try {
-			this.getClass().getField("pickaxe" + field).set(this, pick);
-			this.getClass().getField("axe" + field).set(this, axe);
-			this.getClass().getField("shovel" + field).set(this, shovel);
-			this.getClass().getField("hoe" + field).set(this, hoe);
-			this.getClass().getField("sword" + field).set(this, sword);
-			this.getClass().getField("Multitool" + field).set(this, multitool);
-			this.getClass().getField("battleaxe" + field).set(this, BAxe);
-			this.getClass().getField("knife" + field).set(this, knife);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	private void register() {
 		for (Field f : this.getClass().getFields()) {
-			Object obj = null;
 			try {
-				obj = f.get(this);
+                Object obj = f.get(this);
 				if (obj == null) {
-					System.out.println(f + " field is null");
 					continue;
 				}
-			} catch (IllegalArgumentException e) {
-			} catch (IllegalAccessException e) {
+                if (obj instanceof Item) {
+                    GameRegistry.registerItem((Item) obj, ((Item) obj).getUnlocalizedName().substring(5));
+                }else if (obj instanceof Block && !(obj instanceof BasicBlock)) {
+                    GameRegistry.registerBlock((Block) obj, ((Block) obj).getUnlocalizedName().substring(5));
+                }
+			} catch (Exception ignored) {
 			}
-            if (obj instanceof Item) {
-                GameRegistry.registerItem((Item) obj, ((Item) obj).getUnlocalizedName());
-            }else if (obj instanceof Block && !(obj instanceof BasicBlock)) {
-                GameRegistry.registerBlock((Block) obj, ((Block) obj).getUnlocalizedName());
-            }
 		}
 	}
 
@@ -429,22 +254,22 @@ public class MoreMinecraft {
 		createArmorSet("Copper", armorMetal, "copper", materials, 17);
 		createArmorSet("Tin", armorMetal, "tin", materials, 18);
 		createArmorSet("Bronze", armorBronze, "bronze", materials, 19);
-		createToolSet("Emerald", toolEmerald, "Emerald", "Emerald", Items.emerald, 0);
-		createToolSet("Obsidian", toolObsidian, "Obsidian", "Obsidian", materials, 2);
-		createToolSet("Ruby", toolCrystal, "RSaph", "Ruby", materials, 20);
-		createToolSet("YellowSaph", toolCrystal, "YSaph", "Yellow Sapphire", materials, 23);
-		createToolSet("BlueSaph", toolCrystal, "BSaph", "Blue Sapphire", materials, 21);
-		createToolSet("GreenSaph", toolCrystal, "GSaph", "Green Sapphire", materials, 22);
-		createToolSet("Steel", toolSteel, "Steel", "Steel", materials, 3);
-		createToolSet("Titanium", toolTitanium, "Titanium", "Titanium", materials, 4);
-		createToolSet("End", toolEnd, "End", "Endium", materials, 24);
-		createToolSet("Quartz", toolQuartz, "Quartz", "Quartz", materials, 14);
-		createToolSet("Copper", toolMetal, "Copper", "Copper", materials, 17);
-		createToolSet("Tin", toolMetal, "Tin", "Tin", materials, 18);
-		createToolSet("Bronze", toolBronze, "Bronze", "Bronze", materials, 19);
+		createToolSet(toolEmerald, "Emerald", Items.emerald, 0);
+		createToolSet(toolObsidian, "Obsidian", materials, 2);
+		createToolSet(toolCrystal, "RSaph", materials, 20);
+		createToolSet(toolCrystal, "YSaph", materials, 23);
+		createToolSet(toolCrystal, "BSaph", materials, 21);
+		createToolSet(toolCrystal, "GSaph", materials, 22);
+		createToolSet(toolSteel, "Steel", materials, 3);
+		createToolSet(toolTitanium, "Titanium", materials, 4);
+		createToolSet(toolEnd, "End", materials, 24);
+		createToolSet(toolQuartz, "Quartz", materials, 14);
+		createToolSet(toolMetal, "Copper", materials, 17);
+		createToolSet(toolMetal, "Tin", materials, 18);
+		createToolSet(toolBronze, "Bronze", materials, 19);
 	}
 
-	public static void crafting() {
+	private void crafting() {
 		//MISC
 		GameRegistry.addShapelessRecipe(new ItemStack(materials, 1, 1), Items.milk_bucket);
 		GameRegistry.addShapelessRecipe(new ItemStack(foods), new ItemStack(materials, 1, 1), Items.bread);
@@ -542,29 +367,25 @@ public class MoreMinecraft {
 		GameRegistry.addRecipe(new ItemStack(ironTrapDoor, 2), "XXX", "XXX", 'X', Items.iron_ingot);
 	}
 
-	public static void items() {
+	private void items() {
 		materials = new ItemMaterials("honey", "butter", "obsidianPlate", "ingotSteel", "ingotTitanium", "ingotCarbonatedIron", "chain", "diamondNugget", "lens",
 				"chipVision", "enderiumPlate", "chipMoreHealth", "chipTeleportation", "chipEject", "ingotQuartz", "chipHeater", "Motor", "ingotCopper", "ingotTin", "ingotBronze", "SaphR", "SaphB",
 				"SaphG", "SaphY", "enderium").setUnlocalizedName("materials.").setTextureName(modID + ":");
 		foods = new ItemFoodMod(new String[] { "bread_butter", "bread_honey", "carrotDiamond", "turnipCooked", "CupCake" }, new int[] { 8, 8, 12, 4, 6 }, new float[] {
 				13F, 13F, 16.7F, 2F, 0.9F }).setUnlocalizedName("foods.").setTextureName(modID + ":");
-		helmetGogglesVision = new ItemArmorRedstoneMod(armorInfinite, 0, "goggles").setUnlocalizedName("gogglesVision").setTextureName(
-				modID + ":gogglesVision");
+		helmetGogglesVision = new ItemArmorRedstoneMod(armorInfinite, 0, "goggles").setUnlocalizedName("gogglesVision").setTextureName(modID + ":gogglesVision");
 		turnipCrop = new BlockEdibleCrops(true).setBlockName("turnips").setBlockTextureName("turnips");
 		cornCrop = new BlockEdibleCrops(false).setBlockName("corn").setBlockTextureName("corn");
 		turnip = new ItemSeedFoodMod(2, 0.5F, turnipCrop, Blocks.farmland).setUnlocalizedName("turnip").setTextureName(modID + ":turnip");
 		corn = new ItemSeedFoodMod(4, 0.9F, cornCrop, Blocks.farmland).setUnlocalizedName("corn").setTextureName(modID + ":corn");
-		plateDualHearts = new ItemArmorRedstoneMod(armorInfinite, 1, "moreHealth").setUnlocalizedName("plateMoreHealth").setMaxDamage(72000)
-				.setTextureName(modID + ":plateMoreHealth");
+		plateDualHearts = new ItemArmorRedstoneMod(armorInfinite, 1, "moreHealth").setUnlocalizedName("plateMoreHealth").setMaxDamage(72000).setTextureName(modID + ":plateMoreHealth");
 		enderStaff = new EnderStaff().setUnlocalizedName("enderStaff").setCreativeTab(tabMisc).setFull3D().setTextureName(modID + ":enderStaff");
-		diamondEnderpearl = new ItemDiamondEnderPearl().setUnlocalizedName("diamondEnderpearl").setCreativeTab(tabMisc)
-				.setTextureName(modID + ":diamondEnderpearl");
+		diamondEnderpearl = new ItemDiamondEnderPearl().setUnlocalizedName("diamondEnderpearl").setCreativeTab(tabMisc).setTextureName(modID + ":diamondEnderpearl");
 		potatoLauncher = new PotatoLauncher().setCreativeTab(tabMisc).setUnlocalizedName("PotatoLauncher").setFull3D().setTextureName(modID + ":PotatoLauncher");
 		scubaHelmet = new ItemArmorRedstoneMod(armorInfinite, 0, "scuba").setUnlocalizedName("scubaHelmet").setTextureName(modID + ":scubaHelmet");
 		jumpBoots = new ItemArmorRedstoneMod(armorInfinite, 3, "jumpAssist").setUnlocalizedName("jumpBoots").setTextureName(modID + ":jumpBoots");
 		arrowLauncher = new ArrowLauncher().setCreativeTab(tabMisc).setUnlocalizedName("ArrowLauncher").setFull3D().setTextureName(modID + ":ArrowLauncher");
-		legsSwiftness = new ItemArmorRedstoneMod(armorInfinite, 2, "swiftness").setUnlocalizedName("legsSwiftness").setTextureName(
-				modID + ":legsSwiftness");
+		legsSwiftness = new ItemArmorRedstoneMod(armorInfinite, 2, "swiftness").setUnlocalizedName("legsSwiftness").setTextureName(modID + ":legsSwiftness");
 		MultitoolWood = new ItemMultitoolMod(Item.ToolMaterial.WOOD).setUnlocalizedName("paxleWood").setTextureName(modID + ":tools/paxleWood");
 		MultitoolStone = new ItemMultitoolMod(Item.ToolMaterial.STONE).setUnlocalizedName("paxleStone").setTextureName(modID + ":tools/paxleStone");
 		MultitoolIron = new ItemMultitoolMod(Item.ToolMaterial.IRON).setUnlocalizedName("paxleIron").setTextureName(modID + ":tools/paxleIron");
@@ -574,8 +395,7 @@ public class MoreMinecraft {
 		battleaxeStone = new ItemBattleAxeMod(Item.ToolMaterial.STONE).setUnlocalizedName("battleaxeStone").setTextureName(modID + ":tools/battleaxeStone");
 		battleaxeIron = new ItemBattleAxeMod(Item.ToolMaterial.IRON).setUnlocalizedName("battleaxeIron").setTextureName(modID + ":tools/battleaxeIron");
 		battleaxeGold = new ItemBattleAxeMod(Item.ToolMaterial.GOLD).setUnlocalizedName("battleaxeGold").setTextureName(modID + ":tools/battleaxeGold");
-		battleaxeDiamond = new ItemBattleAxeMod(Item.ToolMaterial.EMERALD).setUnlocalizedName("battleaxeDiamond").setTextureName(
-				modID + ":tools/battleaxeDiamond");
+		battleaxeDiamond = new ItemBattleAxeMod(Item.ToolMaterial.EMERALD).setUnlocalizedName("battleaxeDiamond").setTextureName(modID + ":tools/battleaxeDiamond");
 		knifeWood = new ItemKnifeMod(Item.ToolMaterial.WOOD).setUnlocalizedName("knifeWood").setTextureName(modID + ":tools/knifeWood");
 		knifeStone = new ItemKnifeMod(Item.ToolMaterial.STONE).setUnlocalizedName("knifeStone").setTextureName(modID + ":tools/knifeStone");
 		knifeIron = new ItemKnifeMod(Item.ToolMaterial.IRON).setUnlocalizedName("knifeIron").setTextureName(modID + ":tools/knifeIron");
@@ -587,11 +407,9 @@ public class MoreMinecraft {
 				"TitaniumEnd", "Copper", "CopperNether", "CopperEnd", "Tin", "TinNether", "TinEnd");
 		beeHive = new BlockBeehive().setBlockName("beeHive").setBlockTextureName(modID + ":beeHive");
 		ores = new BlockGem();
-		chocolateCake = new BlockChocolateCake().setHardness(0.5F).setStepSound(Block.soundTypeCloth).setBlockName("choccake")
-				.setBlockTextureName(modID + ":choccake");
+		Block chocolateCake = GameRegistry.registerBlock(new BlockChocolateCake().setHardness(0.5F).setStepSound(Block.soundTypeCloth).setBlockName("choccake").setBlockTextureName(modID + ":choccake"), null, "choccake");
 		itemChocolateCake = new ItemReed(chocolateCake).setCreativeTab(tabMisc).setUnlocalizedName("choccake").setTextureName(modID + ":choccake");
 		ironTrapDoor = new BlockIronTrapDoor().setBlockName("irontrapdoor").setCreativeTab(tabMisc).setBlockTextureName(modID + ":irontrapdoor");
-		unattunedLauncher = new Item().setCreativeTab(tabMisc).setUnlocalizedName("UnattunedLauncher").setFull3D().setMaxStackSize(1)
-				.setTextureName(modID + ":UnattunedLauncher");
+		unattunedLauncher = new Item().setCreativeTab(tabMisc).setUnlocalizedName("UnattunedLauncher").setFull3D().setMaxStackSize(1).setTextureName(modID + ":UnattunedLauncher");
 	}
 }

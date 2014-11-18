@@ -1,11 +1,15 @@
 package moreminecraft;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.registry.EntityRegistry;
+import moreminecraft.entities.EntityBakedPotatoLaunched;
+import moreminecraft.entities.EntityDiamondEnderpearl;
+import moreminecraft.entities.EntityPoisonPotatoLaunched;
+import moreminecraft.entities.EntityPotatoLaunched;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 
 public class CommonProxy {
@@ -20,6 +24,10 @@ public class CommonProxy {
 	}
 
 	public void register() {
-		MinecraftForge.EVENT_BUS.register(this);
+        EntityRegistry.registerModEntity(EntityDiamondEnderpearl.class, "Diamond_EnderPearl", 0, MoreMinecraft.INSTANCE, 64, 10, true);
+        EntityRegistry.registerModEntity(EntityPotatoLaunched.class, "PotatoThrown", 1, MoreMinecraft.INSTANCE, 64, 20, true);
+        EntityRegistry.registerModEntity(EntityBakedPotatoLaunched.class, "PotatoThrownBaked", 2, MoreMinecraft.INSTANCE, 64, 20, true);
+        EntityRegistry.registerModEntity(EntityPoisonPotatoLaunched.class, "PotatoThrownPoison", 3, MoreMinecraft.INSTANCE, 64, 20, true);
+        //EntityRegistry.registerModEntity(EntityBear.class, "Bear", 4, this, 80, 3, true);
 	}
 }
