@@ -29,12 +29,11 @@ public class ItemArmorRedstoneMod extends ItemArmorMod {
 	}
 
 	public void addPotionWhenWalk(Item item, EntityPlayer player, int type, int potID, int potTick, int potStrong) {
-		if (player.getEquipmentInSlot(type) != null) {
+		if (player.onGround && player.getEquipmentInSlot(type) != null) {
 			ItemStack itemPar1 = player.getEquipmentInSlot(type);
-			boolean Moving = player.moveForward != 0 || player.moveStrafing != 0;
-			if (itemPar1 != null && itemPar1.getItem() == item && Moving && player.onGround) {
-				player.addPotionEffect(new PotionEffect(potID, potTick, potStrong));
-			}
+			if (itemPar1 != null && itemPar1.getItem() == item && !player.isPotionActive(potID)) {
+                player.addPotionEffect(new PotionEffect(potID, potTick, potStrong));
+            }
 		}
 	}
 
