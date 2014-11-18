@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import moreminecraft.MoreMinecraft;
 import moreminecraft.items.ItemBlockWithMetaNamed;
 
-public class BlockOreDimensional extends BasicBlock {
+public final class BlockOreDimensional extends BasicBlock {
 	private final String[] names;
 	private IIcon[] icons;
 
@@ -40,7 +40,8 @@ public class BlockOreDimensional extends BasicBlock {
 		return names;
 	}
 
-	@Override
+	@SuppressWarnings("unchecked")
+    @Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for (int i = 0; i < names.length; i++) {

@@ -22,7 +22,8 @@ public class ItemKnifeMod extends ItemSword {
 		return (float) ((this.toolMaterial.getDamageVsEntity() / 2) - 1.5);
 	}
 
-	@Override
+	@SuppressWarnings("unchecked")
+    @Override
 	public Multimap getItemAttributeModifiers() {
 		Multimap multimap = super.getItemAttributeModifiers();
 		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", this.weaponDamage, 0));

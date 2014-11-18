@@ -12,7 +12,7 @@ import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockStorage extends BasicBlock {
+public final class BlockStorage extends BasicBlock {
 	private IIcon[] icon;
 	private final String[] names;
 
@@ -38,7 +38,8 @@ public class BlockStorage extends BasicBlock {
 		return names;
 	}
 
-	@Override
+	@SuppressWarnings("unchecked")
+    @Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for (int i = 0; i < names.length; i++) {

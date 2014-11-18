@@ -20,7 +20,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockGem extends BasicBlock {
+public final class BlockGem extends BasicBlock {
 	private static final int[] chances = { 2, 1, 4 };//dimensions:(-1/0/1),
 	private static final int[] dropMeta = { 20, 21, 22, 23, 4 };
 	protected static final Item[] drops = { Items.dye, Items.coal, Items.redstone, Items.diamond};
@@ -100,7 +100,8 @@ public class BlockGem extends BasicBlock {
 		return names;
 	}
 
-	@Override
+	@SuppressWarnings("unchecked")
+    @Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for (int i = 0; i < names.length; i++) {
