@@ -27,14 +27,16 @@ public class ItemBattleAxeMod extends ItemTool {
 		super(3.0F, par2EnumToolMaterial, blocksEffectiveAgainst);
 		this.setCreativeTab(MoreMinecraft.tabTools);
 		this.weaponDamage = 6.0F + par2EnumToolMaterial.getDamageVsEntity();
+        setHarvestLevel("axe", par2EnumToolMaterial.getHarvestLevel());
 	}
 
 	@Override
-	public boolean func_150897_b(Block par1Block) {
+	public boolean canHarvestBlock(Block par1Block, ItemStack itemStack) {
 		return par1Block == Blocks.web || par1Block.getMaterial() == Material.wood || par1Block.getMaterial() == Material.plants || par1Block.getMaterial() == Material.vine;
 	}
 
-	@Override
+	@SuppressWarnings("unchecked")
+    @Override
 	public Multimap getItemAttributeModifiers() {
 		Multimap multimap = super.getItemAttributeModifiers();
 		multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", this.weaponDamage, 0));

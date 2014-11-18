@@ -10,12 +10,15 @@ import net.minecraft.item.ItemTool;
 
 public class ItemMultitoolMod extends ItemTool {
 	public ItemMultitoolMod(ToolMaterial par2EnumToolMaterial) {
-		super(2, par2EnumToolMaterial, GameData.blockRegistry.getKeys());
+		super(2, par2EnumToolMaterial, null);
 		setCreativeTab(MoreMinecraft.tabTools);
+        setHarvestLevel("axe", par2EnumToolMaterial.getHarvestLevel());
+        setHarvestLevel("pickaxe", par2EnumToolMaterial.getHarvestLevel());
+        setHarvestLevel("shovel", par2EnumToolMaterial.getHarvestLevel());
 	}
 
 	@Override
-	public boolean func_150897_b(Block block) {
+	public boolean canHarvestBlock(Block block, ItemStack itemStack) {
         if(block == Blocks.obsidian){
             return this.toolMaterial.getHarvestLevel() >= 3;
         }
@@ -34,10 +37,10 @@ public class ItemMultitoolMod extends ItemTool {
 
 	@Override
 	public float func_150893_a(ItemStack par1ItemStack, Block par2Block) {
-		return isPickableMaterial(par2Block.getMaterial()) ? this.efficiencyOnProperMaterial : super.func_150893_a(par1ItemStack, par2Block);
+		return this.efficiencyOnProperMaterial;
 	}
 
     public boolean isPickableMaterial(Material material){
-        return material == Material.rock || material == Material.iron || material == Material.anvil;
+        return material == Material.ground || material == Material.rock || material == Material.iron || material == Material.anvil;
     }
 }
