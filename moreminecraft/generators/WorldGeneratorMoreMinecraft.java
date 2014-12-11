@@ -1,7 +1,5 @@
 package moreminecraft.generators;
 
-import java.util.Random;
-
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import moreminecraft.MoreMinecraft;
 import net.minecraft.init.Blocks;
@@ -10,7 +8,9 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 
-public class WorldGeneratorMoreMinecraft {
+import java.util.Random;
+
+public final class WorldGeneratorMoreMinecraft {
 	public static WorldGenerator enderiumEnd = new WorldGenReplace(MoreMinecraft.oreDimensional, 1, 4, Blocks.end_stone);
 	public static WorldGenerator oreBSaphEnd = new WorldGenReplace(MoreMinecraft.ores, 1, 10, Blocks.end_stone);
 	public static WorldGenerator oreYSaphEnd = new WorldGenReplace(MoreMinecraft.ores, 3, 6, Blocks.end_stone);

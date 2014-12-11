@@ -1,13 +1,17 @@
 package moreminecraft;
 
-import java.lang.reflect.Field;
-
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.ModContainer;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameData;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import moreminecraft.blocks.*;
-import moreminecraft.entities.*;
 import moreminecraft.generators.WorldGeneratorMoreMinecraft;
 import moreminecraft.items.*;
 import net.minecraft.block.Block;
@@ -18,18 +22,11 @@ import net.minecraft.item.*;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.lang.reflect.Field;
 
 @Mod(modid = MoreMinecraft.modID, name = "More Minecraft!", useMetadata = true)
-public class MoreMinecraft {
+public final class MoreMinecraft {
     public static final String modID = "moreminecraft";
     @Mod.Instance(modID)
     public static MoreMinecraft INSTANCE;

@@ -1,5 +1,6 @@
 package moreminecraft.items;
 
+import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 import moreminecraft.MoreMinecraft;
 import net.minecraft.block.Block;
@@ -13,8 +14,6 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.world.World;
-
-import com.google.common.collect.Multimap;
 
 import java.util.Set;
 

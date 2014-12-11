@@ -1,6 +1,5 @@
 package moreminecraft.items;
 
-import cpw.mods.fml.common.registry.GameData;
 import moreminecraft.MoreMinecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

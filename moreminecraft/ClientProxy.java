@@ -1,12 +1,12 @@
 package moreminecraft;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import moreminecraft.entities.EntityBakedPotatoLaunched;
 import moreminecraft.entities.EntityDiamondEnderpearl;
 import moreminecraft.entities.EntityPoisonPotatoLaunched;
 import moreminecraft.entities.EntityPotatoLaunched;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.init.Items;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
 	@Override

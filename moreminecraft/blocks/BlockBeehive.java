@@ -1,11 +1,11 @@
 package moreminecraft.blocks;
 
-import java.util.Random;
-
 import moreminecraft.MoreMinecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+
+import java.util.Random;
 
 public class BlockBeehive extends Block {
 	public BlockBeehive() {

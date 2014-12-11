@@ -1,10 +1,8 @@
 package moreminecraft.blocks;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import moreminecraft.MoreMinecraft;
 import moreminecraft.items.ItemBlockWithMetaNamed;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -17,8 +15,10 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public final class BlockGem extends BasicBlock {
 	private static final int[] chances = { 2, 1, 4 };//dimensions:(-1/0/1),

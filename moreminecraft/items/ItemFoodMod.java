@@ -1,7 +1,5 @@
 package moreminecraft.items;
 
-import java.util.List;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import moreminecraft.MoreMinecraft;
@@ -13,6 +11,8 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public class ItemFoodMod extends ItemFood {
 	public final String[] names;

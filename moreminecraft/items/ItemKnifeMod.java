@@ -1,10 +1,10 @@
 package moreminecraft.items;
 
+import com.google.common.collect.Multimap;
 import moreminecraft.MoreMinecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.item.ItemSword;
-import com.google.common.collect.Multimap;
 
 public class ItemKnifeMod extends ItemSword {
 	private float weaponDamage;

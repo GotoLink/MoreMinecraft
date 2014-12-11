@@ -1,13 +1,13 @@
 package moreminecraft.generators;
 
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-public class WorldGenReplace extends WorldGenerator {
+import java.util.Random;
+
+public final class WorldGenReplace extends WorldGenerator {
 	/** The block ID of the ore to be placed using this generator. */
 	private final Block minableBlockId;
 	private final int minableBlockMeta;

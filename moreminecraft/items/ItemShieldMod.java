@@ -1,12 +1,11 @@
 package moreminecraft.items;
 
+import com.google.common.collect.Multimap;
 import net.minecraft.block.Block;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-
-import com.google.common.collect.Multimap;
 
 @SuppressWarnings("UnusedDeclaration")
 public class ItemShieldMod extends ItemSword {
